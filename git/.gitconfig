@@ -1,0 +1,101 @@
+# git config --global --unset http.proxy
+# git config --global http.proxy 'socks5://127.0.0.1:1080'
+
+[user]
+    name = liuyinz
+    email = cheunghsu@outlook.com
+
+[hub]
+    protocol = https
+
+[apply]
+    whitespace = nowarn
+
+[core]
+    # editor = emacsclient -n -c -a \"\"
+    editor = emacsclient -n -c -a \"\"
+    excludesfile = /Users/ray/.gitignore
+    autocrlf = input
+    pager = less -MR
+
+# [interactive]
+      # diffFilter = delta --color-only
+
+[http]
+    postBuffer = 524288000
+
+[http "https://github.com"]
+    proxy = socks5://127.0.0.1:4781
+[https "https://github.com"]
+    proxy = socks5://127.0.0.1:4781
+
+[credential]
+    helper = osxkeychain
+
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+
+[blame]
+    date = short
+    coloring = repeatedLines
+    blankBoundary = true
+
+[color "blame"]
+    repeatedLines = green
+
+[format]
+    pretty = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[log]
+    date = short
+
+[diff]
+    tool = ediff
+
+[difftool]
+    prompt = false
+
+# [difftool "ediff"]
+#     # cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+#   	cmd = emacsclient -c -n -a \"\" --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+
+# # [difftool "ediff"]
+#     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+
+# [difftool "ediffclient"]
+#     cmd = emacsclient -n -e \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+
+[difftool "ediff"]
+    cmd = edf "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = ediff
+    conflictStyle = diff3
+
+[mergetool]
+    keepBackup = false
+    prompt = false
+
+# [mergetool "ediff"]
+#     cmd = emacsclient -n -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+
+[mergetool "ediff"]
+    cmd = edf "$LOCAL" "$REMOTE" "$MERGED" "$BASE"
+
+[rerere]
+    enabled = true
+
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[pull]
+	rebase = false
+[advice]
+	addEmptyPathspec = false
+[commit]
+	template = /Users/ray/.gitmessage

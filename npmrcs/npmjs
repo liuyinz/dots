@@ -1,0 +1,4 @@
+registry=https://registry.npmjs.com/
+//registry.npmjs.com/:_authToken=367100f2-9240-4785-920e-a605dca541f3
+proxy=http://127.0.0.1:4780/
+https-proxy=http://127.0.0.1:4780/

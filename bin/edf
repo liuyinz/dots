@@ -1,0 +1,36 @@
+#!/bin/bash
+
+app_running_p() {
+	# return 1 if succeed,otherwise 0
+	ps aux | grep -v grep | grep -c "Emacs.app/Contents/MacOS/Emacs"
+
+	# pgrep -f "Emacs.app/Contents/MacOS/Emacs"
+}
+
+if [[ $(app_running_p) -eq 0 ]]; then
+	eval "/Applications/Emacs.app/Contents/MacOS/Emacs" &>/dev/null &
+	disown && sleep 5
+fi
+
+# LOCAL=${1}
+# REMOTE=${2}
+MERGED=${3}
+# BASE=${4}
+
+emacsclient -n "${MERGED}"
+
+# case "${#}" in
+# 2)
+# 	EVAL="ediff-files \"${LOCAL}\" \"${REMOTE}\""
+# 	;;
+# 3)
+# 	EVAL="ediff-merge-files \"${LOCAL}\" \"${REMOTE}\" nil \"${MERGED}\""
+# 	;;
+# 4)
+# 	EVAL="ediff-merge-files-with-ancestor \"${LOCAL}\" \"${REMOTE}\" \"${BASE}\" nil \"${MERGED}\""
+# 	;;
+# esac
+
+# emacsclient -n -c -e "(${EVAL})" 2>&1
+
+# exit $?
