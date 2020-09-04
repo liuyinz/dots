@@ -106,11 +106,6 @@
   color: tomato !important;
 }
 
-.show-file-icons .folder-icon::before {
-  color: #2aa8a2;
-  content: '';
-}
-
 .monaco-workbench.titlebar-less:not(.fullscreen)
   .activitybar:not([aria-hidden='true'])
   + .sidebar:not(.right)
