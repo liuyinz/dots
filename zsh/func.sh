@@ -76,7 +76,7 @@ bci() {
 bcp() {
 	local uninst
 	uninst=$(brew leaves | eval "fzf ${FZF_DEFAULT_OPTS} \
-        --header='[brew:clean]'")
+        --header='[brew formulae:uninstall]'")
 
 	if [[ $uninst ]]; then
 		for prog in $(echo "$uninst"); do
@@ -89,7 +89,7 @@ bcp() {
 bcc() {
 	local uninst
 	uninst=$(brew cask list | eval "fzf ${FZF_DEFAULT_OPTS} \
-        --header='[brew cask:clean]'")
+        --header='[brew cask:uninstall]'")
 
 	if [[ $uninst ]]; then
 		for prog in $(echo "$uninst"); do
@@ -102,25 +102,12 @@ bcc() {
 bup() {
 	brew update
 	local upd
-	upd=$(brew outdated | eval "fzf ${FZF_DEFAULT_OPTS} \
+	upd=$(brew outdated --greedy | eval "fzf ${FZF_DEFAULT_OPTS} \
         --header='[brew:update]'")
 
 	if [[ $upd ]]; then
 		for prog in $(echo "$upd"); do
-			brew upgrade "$prog"
-		done
-	fi
-}
-
-# [B]rew [C]ask [U]pdate [P]lugin
-bcu() {
-	local upd
-	upd=$(brew cask outdated --greedy | eval "fzf ${FZF_DEFAULT_OPTS} \
-        --header='[brew cask:update --greedy]'")
-
-	if [[ $upd ]]; then
-		for prog in $(echo "$upd"); do
-			brew cask upgrade --greedy "$prog"
+			brew upgrade --greedy "$prog"
 		done
 	fi
 }
@@ -213,8 +200,7 @@ zr() {
 	# zplug clear
 }
 
-
-# Additional 
+# Additional
 # Emacs vterm-mode setting
 function vterm_printf() {
 	if [ -n "$TMUX" ]; then
