@@ -39,17 +39,15 @@ spec:
 
   ~/.clang-format: .clang-format
 
-  ~/.cargo/config: cargo_config
+  ~/.cargo/config: cargo/config
 
   ~/.gemrc: .gemrc
 
   # tool
   ~/.ripgreprc: .ripgreprc
   ~/.rgignore: .rgignore
-
+  ~/.ssh/config: ssh/config
   ~/.config/ranger: config/ranger
-
-  ~/.ssh/config: ssh_config
   ~/.config/htop/htoprc: config/htoprc
 
   # ~/.proxychains/proxychains.conf: proxychains_proxychains.conf
