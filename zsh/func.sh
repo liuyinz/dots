@@ -88,7 +88,7 @@ bcp() {
 # [B]rew [C]ask [C]lean [P]lugin
 bcc() {
 	local uninst
-	uninst=$(brew cask list | eval "fzf ${FZF_DEFAULT_OPTS} \
+	uninst=$(brew list --cask | eval "fzf ${FZF_DEFAULT_OPTS} \
         --header='[brew cask:uninstall]'")
 
 	if [[ $uninst ]]; then
