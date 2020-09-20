@@ -56,4 +56,3 @@ spec:
   ~/.config/com.googlecode.iterm2.plist: config/iterm2.plist
   ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
   ~/.config/karabiner/assets: config/karabiner/assets
-  ~/.hammerspoon: hammerspoon
