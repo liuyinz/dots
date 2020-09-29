@@ -26,7 +26,8 @@ export TERM=xterm-24bit
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export EDITOR='ec' 
+# export EDITOR='ec' 
+export EDITOR="code -w"
 export PAGER=less
 export LESSHISTFILE=$CACHE_DIR/.lesshst
 # gls
