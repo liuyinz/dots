@@ -26,13 +26,12 @@ export TERM=xterm-24bit
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-# export EDITOR='ec' 
-export EDITOR="code -w"
+# export EDITOR='ec'
+export EDITOR="code"
 export PAGER=less
 export LESSHISTFILE=$CACHE_DIR/.lesshst
 # gls
 export TIME_STYLE="+%y-%m-%d %H:%M"
-
 
 # Tool
 # -----------------------
@@ -75,7 +74,6 @@ export FZF_DEFAULT_OPTS=" \
     --inline-info \
     --height '70%' \
     --color=16,fg+:#AA6E90"
-
 
 # Lang
 # -----------------------
