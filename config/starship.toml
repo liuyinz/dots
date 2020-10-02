@@ -6,17 +6,18 @@ disabled = false
 show_always = false
 
 [hostname]
-ssh_only = true
 disabled = false
+ssh_only = true
 
 [battery]
 disabled = true
 
 [character]
-use_symbol_for_status = true
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
 
 [cmd_duration]
-prefix = ""
+format = "[$duration]($style) "
 
 [directory]
 truncation_length = 2
@@ -25,8 +26,7 @@ fish_style_pwd_dir_length = 0
 [git_commit]
 disabled = false
 commit_hash_length = 7
-prefix = ""
-suffix = " "
+format = "[\\($hash\\)]($style) "
 
 [git_state]
 progress_divider = "/"
