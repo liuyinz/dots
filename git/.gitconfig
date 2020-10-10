@@ -12,7 +12,6 @@
     whitespace = nowarn
 
 [core]
-    # editor = emacsclient -n -c -a \"\"
 	editor = code --wait
     excludesfile = /Users/ray/.gitignore
     autocrlf = input
@@ -63,33 +62,6 @@
     prompt = false
 [mergetool "vscode"]
     cmd = code --wait $MERGED
-
-# [difftool "ediff"]
-#     # cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
-#   	cmd = emacsclient -c -n -a \"\" --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-
-# # [difftool "ediff"]
-#     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-
-# [difftool "ediffclient"]
-#     cmd = emacsclient -n -e \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-
-# [difftool "ediff"]
-#     cmd = edf "$LOCAL" "$REMOTE"
-
-# [merge]
-#     tool = ediff
-#     conflictStyle = diff3
-
-# [mergetool]
-#     keepBackup = false
-#     prompt = false
-
-# [mergetool "ediff"]
-#     cmd = emacsclient -n -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
-
-# [mergetool "ediff"]
-#     cmd = edf "$LOCAL" "$REMOTE" "$MERGED" "$BASE"
 
 [rerere]
     enabled = true

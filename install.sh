@@ -188,37 +188,6 @@ brew bundle install
 # 	echo "skipped"
 # fi
 
-read -r -p "Are you a emacser? [y|N] " response
-if [[ $response =~ (y|yes|Y) ]]; then
-	brew install gpg
-	brew install ripgrep
-	brew install grip
-	brew install aspell
-	echo "Install Emacs27"
-	brew tap d12frosted/emacs-plus
-	brew install emacs-plus --HEAD --with-emacs-27-branch --with-xwidgets --without-spacemacs-icon --with-jansson
-
-	# symlink to /usr/local/bin/emacs,enable emacsclient.. if multiversion installed
-	# brew link emacs-plus
-
-	# symlink to /Applications/Emacs.app
-	ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
-
-	echo "Configruation Emacs"
-	git clone https://github.com/liuyinz/.emacs.d ~/.emacs.d
-	echo "Installing Lsp for emacs lsp-mode"
-	npm install -g vscode-html-languageserver-bin
-	npm install -g vscode-css-languageserver-bin
-	npm i -g bash-language-server
-	npm i -g typescript
-	npm i -g prettier
-	npm i -g typescript-language-server
-else
-	echo "skipped"
-fi
-
-# # echo
-
 # # ###########################################################
 # echo " Install Gui Applications"
 # # ###########################################################
