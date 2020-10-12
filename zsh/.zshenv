@@ -21,12 +21,11 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # terminfo
-export TERM=xterm-24bit
+# export TERM=xterm-24bit
 
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-# export EDITOR='ec'
 export EDITOR="code"
 export PAGER=less
 export LESSHISTFILE=$CACHE_DIR/.lesshst
@@ -50,9 +49,6 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-
-# ranger
-export RANGER_LOAD_DEFAULT_RC=true
 
 # z.lua
 export _ZL_DATA=$ZCACHE/.zlua

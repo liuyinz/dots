@@ -31,7 +31,6 @@ alias ueap="unset ALL_PROXY"
 alias asr='alias | rg'
 # alias python='/usr/local/bin/python3'
 # alias pip='/usr/local/bin/pip3'
-alias rr='ranger'
 alias rt='rmtrash'
 
 # bonclay

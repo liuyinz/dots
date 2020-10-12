@@ -47,7 +47,7 @@ spec:
   ~/.ripgreprc: .ripgreprc
   ~/.rgignore: .rgignore
   ~/.ssh/config: ssh/config
-  ~/.config/ranger: config/ranger
+  ~/.config/lf/lfrc: config/lfrc
   ~/.config/htop/htoprc: config/htoprc
 
   # ~/.proxychains/proxychains.conf: proxychains_proxychains.conf
