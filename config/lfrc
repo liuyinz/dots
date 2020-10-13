@@ -22,26 +22,16 @@ map E !$f
 
 ## CMD
 cmd open $$EDITOR $f
-
-# rename file
-cmd rename %{{
-    if [ -e $1 ]; then
-        printf "file exists , OVERWRITE? [y/n] "
-        read ans
-        [ $ans = "y" ] && mv -f $f $1
-    else
-        mv $f $1
-    fi
-}}
+cmd rename %mv -i $f $1
 
 # move files to trash
+&mkdir -p ~/.trash
 cmd trash %{{
     set -f
-    mkdir -p ~/.trash
     if [ -x "$(command -v rmtrash)" ]; then
         rmtrash $fx
     else
-        printf "please install rmtrash OR rm -rf? [y/n] "
+        printf "rmtrash not installed OR rm -rf? [y/n] "
         read ans
         [ $ans = "y" ] && rm -rf $fx
     fi
