@@ -8,7 +8,7 @@ set tabstop 4
 set shellopts '-eu'
 
 ## MAPPING
-map x cut
+map d cut
 map D trash
 map <enter> shell
 map r push :rename<space>
@@ -17,12 +17,16 @@ map tz push :zip<space>
 map te extract
 
 # execute current file (must be executable)
-map e $$f
-map E !$f
+map x $$f
+map X !$f
+
+# Add directory to vscode wordspace
+map e $[ -d "$fx" ] && code --add "$fx"
 
 ## CMD
 cmd open $$EDITOR $f
 cmd rename %mv -i $f $1
+
 
 # move files to trash
 &mkdir -p ~/.trash
