@@ -91,7 +91,7 @@ au = add --update
 ## Commit
 c = commit
 cm = commit -m
-cam = commit -am
+cma = commit -am
 cd = commit --amend
 cdn = commit --amend --no-edit
 
