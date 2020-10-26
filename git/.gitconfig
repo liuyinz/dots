@@ -1,79 +1,222 @@
 # git config --global --unset http.proxy
 # git config --global http.proxy 'socks5://127.0.0.1:1080'
 
-[user]
-    name = liuyinz
-    email = cheunghsu@outlook.com
-
-[hub]
-    protocol = https
-
 [apply]
-    whitespace = nowarn
+whitespace = nowarn
+
+[user]
+name = liuyinz
+email = cheunghsu@outlook.com
 
 [core]
-	editor = code --wait
-    excludesfile = /Users/ray/.gitignore
-    autocrlf = input
-    pager = less -MR
+# editor = code --wait
+editor = nvim
+autocrlf = input
+pager = less -x1,5
+excludesfile = /Users/ray/.gitignore
 
-[http]
-    postBuffer = 524288000
-
-[http "https://github.com"]
-    proxy = socks5://127.0.0.1:4781
-[https "https://github.com"]
-    proxy = socks5://127.0.0.1:4781
-
-[credential]
-    helper = osxkeychain
+[commit]
+template = /Users/ray/.gitmessage
 
 [color]
-    ui = auto
-    diff = auto
-    status = auto
-    branch = auto
+ui = auto
+diff = auto
+status = auto
+branch = auto
+
+[credential]
+helper = osxkeychain
 
 [blame]
-    date = short
-    coloring = repeatedLines
-    blankBoundary = true
+date = short
+coloring = repeatedLines
+blankBoundary = true
 
 [color "blame"]
-    repeatedLines = green
+repeatedLines = green
 
 [format]
-    pretty = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+pretty = %C(bold blue)%h%C(auto)%d%Creset %s %C(yellow)[%cs,%an]
 
-[log]
-    date = short
+[pull]
+rebase = false
 
-[diff]
-    tool = vscode
-[difftool]
-    prompt = false
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-
-[merge]
-    tool = vscode
-[mergetool]
-    keepBackup = false
-    prompt = false
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+[advice]
+addEmptyPathspec = false
 
 [rerere]
-    enabled = true
+enabled = true
+
+[hub]
+protocol = https
+
+[http]
+postBuffer = 524288000
+
+[http "https://github.com"]
+proxy = socks5://127.0.0.1:4781
+[https "https://github.com"]
+proxy = socks5://127.0.0.1:4781
+
+[diff]
+tool = vscode
+[difftool]
+prompt = false
+[difftool "vscode"]
+cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+tool = vscode
+[mergetool]
+keepBackup = false
+prompt = false
+[mergetool "vscode"]
+cmd = code --wait $MERGED
 
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-[pull]
-	rebase = false
-[advice]
-	addEmptyPathspec = false
-[commit]
-	template = /Users/ray/.gitmessage
+process = git-lfs filter-process
+required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+
+[alias]
+## Add
+a = add
+ai = add --interactive
+aa = add --all
+ae = add --edit
+ap = add --patch
+au = add --update
+
+## Commit
+c = commit
+cm = commit -m
+cam = commit -am
+cd = commit --amend
+cdn = commit --amend --no-edit
+
+## Restore
+e = restore
+ec = restore --staged
+es = restore -s
+ecs = restore --staged -s
+ea = restore --staged --worktree -s
+
+## Stash
+st = stash push
+stp = stash pop --index
+stl = stash list
+sts = stash show --stat -p
+stb = stash branch
+
+## Branch
+b = branch
+bd = branch -d
+bD = branch -D
+bu = branch -u origin/$(git_current_branch)
+bv = branch --list -vv -a
+bm = branch -vv --merged
+
+## Switch
+w = switch
+wm = switch master
+wd = switch develop
+wc = switch -c
+wt = switch --track
+
+## Merge
+m = merge
+mt = mergetool
+mo = merge origin/master
+mu = merge upstream/master
+
+## Rebase
+rb = rebase
+rbi = rebase -i
+rbd = rebase develop
+rbm = rebase master
+
+## Remote
+rt = remote
+rta = remote add
+rtr = remote remove
+rts = remote show
+
+## Push
+p = push
+po = push origin "$(git_current_branch)"
+pa = push --all origin
+pt = push --tags origin
+pp = push --prune origin
+pd = push --delete
+pu = push --set-upstream origin $(git_current_branch)
+
+## Fetch
+f = fetch
+fo = fetch origin
+fu = fetch upstream
+fa = fetch --all
+fp = fetch --prune
+
+## Clone
+cl = clone
+clr = clone --recurse-submodules
+
+## Pull
+pl = pull
+plu = pull upstream $(git_current_branch)
+plo = pull origin "$(git_current_branch)"
+plr = pull --rebase --autostash -v
+
+# Submodule
+sm = submodule
+sma = submodule add
+sms = submodule status
+smi = submodule init
+smd = submodule deinit
+smu = submodule update
+smf = submodule foreach
+smp = submodule foreach "git pull origin master"
+
+## Remove
+rm = rm -r -f
+rmc = rm -r --cached
+## Clean
+cn = clean -id
+
+ss = status -sb
+bl = blame -w --abbrev=6
+slog = shortlog -nc
+
+## Bisect
+bs = bisect
+bss = bisect start
+bsb = bisect bad
+bsg = bisect good
+bsk = bisect skip
+bsr = bisect run
+bsl = bisect log
+bsr = bisect reset
+
+## Log
+l = log --graph
+lt = log --graph --stat
+la = log --graph --all
+lta = log --graph --all --stat
+
+## Diff
+d = diff
+dc = diff --cached
+ds = diff --stat
+dcs = diff --stat --cached
+dd = diff master...HEAD
+dt = difftool
+
+cp = cherry-pick
+rv = revert
+rvv = revert HEAD
+rvn = revert --no-commit
+
+rt = reset
+rth = reset --hard
+rts = reset --soft

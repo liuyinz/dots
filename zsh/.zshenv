@@ -21,7 +21,7 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # terminfo
-# export TERM=xterm-24bit
+export TERM=xterm-24bit
 
 # misc
 export LANG=en_US.UTF-8
@@ -85,7 +85,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 # Node
 export NVM_DIR="$HOME/.nvm"
-export PATH="$NVM_DIR/versions/node/v14.13.1/bin:$PATH"
+export PATH="$NVM_DIR/versions/node/v14.14.0/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
