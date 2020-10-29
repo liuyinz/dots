@@ -12,10 +12,10 @@
     whitespace = nowarn
 
 [core]
-	editor = code --wait
-    excludesfile = /Users/ray/.gitignore
+	# editor = code --wait
+	editor = nvim
     autocrlf = input
-    pager = less -MR
+    pager = less -x1,5
 
 [http]
     postBuffer = 524288000
@@ -43,7 +43,7 @@
     repeatedLines = green
 
 [format]
-    pretty = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+    pretty = %Cred%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 
 [log]
     date = short
