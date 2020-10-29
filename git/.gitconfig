@@ -1,77 +1,78 @@
 # git config --global --unset http.proxy
-# git config --global http.proxy 'socks5://127.0.0.1:1080'
+# git config --global http.proxy "socks5://$SOCKS"
 
 [apply]
-whitespace = nowarn
+    whitespace = nowarn
 
 [user]
-name = liuyinz
-email = cheunghsu@outlook.com
+    name = liuyinz
+    email = cheunghsu@outlook.com
 
 [core]
-# editor = code --wait
-editor = nvim
-autocrlf = input
-pager = less -x1,5
-excludesfile = /Users/ray/.gitignore
+    # editor = code --wait
+    editor = nvim
+    autocrlf = input
+    pager = less -x1,5
+    excludesfile = /Users/ray/.gitignore
 
 [commit]
-template = /Users/ray/.gitmessage
+    template = /Users/ray/.gitmessage
 
 [color]
-ui = auto
-diff = auto
-status = auto
-branch = auto
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
 
 [credential]
-helper = osxkeychain
+    helper = osxkeychain
 
 [blame]
-date = short
-coloring = repeatedLines
-blankBoundary = true
+    date = short
+    coloring = repeatedLines
+    blankBoundary = true
 
 [color "blame"]
-repeatedLines = green
+    repeatedLines = green
 
 [format]
     pretty = %Cred%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 
 [advice]
-addEmptyPathspec = false
+    addEmptyPathspec = false
 
 [rerere]
-enabled = true
+    enabled = true
 
 [hub]
-protocol = https
+    protocol = https
 
 [http]
-postBuffer = 524288000
+    postBuffer = 524288000
 
 [http "https://github.com"]
-proxy = socks5://127.0.0.1:4781
+    proxy = socks5://127.0.0.1:4781
+
 [https "https://github.com"]
-proxy = socks5://127.0.0.1:4781
+    proxy = socks5://127.0.0.1:4781
 
 [diff]
-tool = vscode
+    tool = vscode
 [difftool]
-prompt = false
+    prompt = false
 [difftool "vscode"]
-cmd = code --wait --diff $LOCAL $REMOTE
+    cmd = code --wait --diff $LOCAL $REMOTE
 
 [merge]
-tool = vscode
+    tool = vscode
 [mergetool]
-keepBackup = false
-prompt = false
+    keepBackup = false
+    prompt = false
 [mergetool "vscode"]
-cmd = code --wait $MERGED
+    cmd = code --wait $MERGED
 
 [filter "lfs"]
-process = git-lfs filter-process
-required = true
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f

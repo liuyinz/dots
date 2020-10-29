@@ -23,6 +23,10 @@ export PATH=$HOME/bin:$PATH
 # terminfo
 export TERM=xterm-24bit
 
+# proxy
+export SOCKS=127.0.0.1:4781
+export HTTPS=127.0.0.1:4780
+
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

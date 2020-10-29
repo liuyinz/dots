@@ -18,10 +18,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# alias ap='ALL_PROXY=socks5://127.0.0.1:1080'
-# alias setp="export ALL_PROXY=socks5://127.0.0.1:1080"
-alias ap='ALL_PROXY=socks5://127.0.0.1:4781'
-alias eap="export ALL_PROXY=socks5://127.0.0.1:4781"
+alias ap="ALL_PROXY=socks5://$SOCKS"
+alias eap="export ALL_PROXY=socks5://$SOCKS"
 alias ueap="unset ALL_PROXY"
 # alias ssha='ssh root@157.245.125.95'
 
