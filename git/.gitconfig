@@ -136,20 +136,16 @@ rbi = rebase -i
 rbd = rebase develop
 rbm = rebase master
 
-## Remote
-rt = remote
-rta = remote add
-rtr = remote remove
-rts = remote show
+cp = cherry-pick
 
 ## Push
 p = push
-po = push origin "$(git_current_branch)"
+po = "!f() { git push origin $(git_current_branch) }; f"
 pa = push --all origin
 pt = push --tags origin
 pp = push --prune origin
 pd = push --delete
-pu = push --set-upstream origin $(git_current_branch)
+pu = "!f() { git push --set-upstream origin $(git_current_branch) }; f"
 
 ## Fetch
 f = fetch
@@ -161,6 +157,12 @@ fp = fetch --prune
 ## Clone
 cl = clone
 clr = clone --recurse-submodules
+
+## Remote
+rt = remote
+rta = remote add
+rtr = remote remove
+rts = remote show
 
 ## Pull
 pl = pull
@@ -212,7 +214,6 @@ dcs = diff --stat --cached
 dd = diff master...HEAD
 dt = difftool
 
-cp = cherry-pick
 rv = revert
 rvv = revert HEAD
 rvn = revert --no-commit
