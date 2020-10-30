@@ -26,6 +26,7 @@ export TERM=xterm-24bit
 # proxy
 export SOCKS=127.0.0.1:4781
 export HTTPS=127.0.0.1:4780
+export PROXYCHAINS_CONF_FILE=$HOME/.config/proxychains.conf
 
 # misc
 export LANG=en_US.UTF-8
