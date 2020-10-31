@@ -27,9 +27,7 @@ spec:
   ~/.gitmessage: git/.gitmessage
 
   # lang
-  ~/.tidyrc: .tidyrc
   ~/.prettierrc.json: .prettierrc.json
-  ~/.stylelintrc.json: .stylelintrc.json
   ~/.eslintrc: .eslintrc
   ~/.npmrcs: npmrcs
 
