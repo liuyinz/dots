@@ -12,8 +12,6 @@ alias lla='gls -lhAF --color --group-directories-first'
 
 alias du="du -h"
 alias df="df -h"
-# alias sort="sort -hr"
-alias grep='grep -E --color=auto'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -85,6 +83,7 @@ alias gwt='git switch --track'
 
 alias gm='git merge'
 alias gmt='git mergetool'
+alias gmd='git merge develop'
 alias gmo='git merge origin/master'
 alias gmu='git merge upstream/master'
 

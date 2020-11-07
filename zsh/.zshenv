@@ -31,7 +31,7 @@ export PROXYCHAINS_CONF_FILE=$HOME/.config/proxychains.conf
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export EDITOR="code"
+export EDITOR="nvim"
 export PAGER=less
 export LESSHISTFILE=$CACHE_DIR/.lesshst
 # gls
@@ -61,7 +61,7 @@ export _ZL_ADD_ONCE=1
 export _ZL_MATCH_MODE=1
 export _ZL_HYPHEN=1
 export _ZL_ROOT_MARKERS=".git,.svn,.hg,.root,package.json"
-# export _ZL_EXCLUDE_DIRS=(.Library Library)
+export _ZL_EXCLUDE_DIRS="$HOME/.cache,$HOME/Library"
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
