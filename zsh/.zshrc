@@ -26,7 +26,7 @@ fi
 
 # Zplug pluggin
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug 'romkatv/powerlevel10k', as:theme, depth:1
+# zplug 'romkatv/powerlevel10k', as:theme, depth:1
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'liuyinz/zsh-completions', defer:2
 zplug "zdharma/fast-syntax-highlighting", defer:3
@@ -81,7 +81,8 @@ source ~/.zsh/alias.zsh
 source ~/.zsh/func.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+eval "$(starship init zsh)"
 # uncomment the line below to profile
 # zprof | less

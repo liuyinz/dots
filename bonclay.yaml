@@ -15,9 +15,11 @@ spec:
   ~/.zshrc: zsh/.zshrc
   ~/.zshenv: zsh/.zshenv
   ~/.zprofile: zsh/.zprofile
-  ~/.p10k.zsh: zsh/.p10k.zsh
+  # ~/.p10k.zsh: zsh/.p10k.zsh
   ~/.zsh: zsh
   ~/.terminfo: terminfo
+  ~/.config/kitty: config/kitty
+  ~/.config/starship.toml: config/starship.toml
 
   ~/bin: bin
 
@@ -51,6 +53,6 @@ spec:
   ~/.config/proxychains.conf: proxychains.conf
 
   # macos
-  ~/.config/com.googlecode.iterm2.plist: config/iterm2.plist
+  # ~/.config/com.googlecode.iterm2.plist: config/iterm2.plist
   ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
   ~/.config/karabiner/assets: config/karabiner/assets
