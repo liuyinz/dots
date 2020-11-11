@@ -199,3 +199,7 @@ zr() {
 	rm -f ~/.cache/zsh/.zcompdump.zwc
 	# zplug clear
 }
+
+# Create a folder and move into it in one command
+# -------------------
+mkcd() { mkdir -p "$@" && cd "$_"; }

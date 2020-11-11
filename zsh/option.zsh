@@ -2,10 +2,20 @@
 
 # options
 # -----------------------
+# hist
+export HISTFILE="${ZCACHE}/.zsh_history"
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+export HISTTIMEFORMAT="[%F %T] "
+
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
+setopt HIST_FIND_NO_DUPS
+# setopt HIST_IGNORE_ALL_DUPS
+
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
-setopt hist_ignore_all_dups
-setopt hist_find_no_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
@@ -17,7 +27,6 @@ setopt PROMPT_SUBST
 setopt inc_append_history_time
 setopt no_inc_append_history
 setopt no_share_history
-setopt extended_history
 setopt AUTO_PUSHD
 
 # setopt autolist
@@ -26,9 +35,6 @@ setopt AUTO_PUSHD
 # setopt LIST_PACKED
 # setopt AUTO_PARAM_SLASH
 
-HISTFILE="${ZCACHE}/.zsh_history"
-HISTSIZE=20000
-SAVEHIST=10000
 
 # zstyle ':completion:incremental:*'  menu select=2 search
 # zstyle :incremental stop-keys $'[\e\C-b\C-f\C-n\C-p\C-u-\C-x]'

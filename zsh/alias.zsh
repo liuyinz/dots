@@ -12,9 +12,6 @@ alias lla='gls -lhAF --color --group-directories-first'
 
 alias du="du -h"
 alias df="df -h"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 
 alias ap="ALL_PROXY=socks5://$SOCKS"
 alias eap="export ALL_PROXY=socks5://$SOCKS"
