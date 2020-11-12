@@ -72,9 +72,12 @@ export FZF_DEFAULT_OPTS=" \
     --cycle \
     --multi \
     --sort \
+    --marker '+' \
     --inline-info \
     --height '70%' \
-    --color=16,fg+:#AA6E90"
+    --color=dark,bg:#282c34,bg+:#2c323c,fg:#979eab,fg+:#aa6e90 \
+    --color=hl+:#98c379,hl:#98c379,pointer:#aa6e90,marker:#ffffff,gutter:#282c34 \
+    --color=info:#61afef,prompt:#61afef,spinner:#98c379,header:#e5c07b"
 
 # Lang
 # -----------------------
