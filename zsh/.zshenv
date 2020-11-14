@@ -53,7 +53,7 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export RIPGREP_CONFIG_PATH=$HOME/.rg/.ripgreprc
 
 # z.lua
 export _ZL_DATA=$ZCACHE/.zlua
@@ -76,7 +76,7 @@ export FZF_DEFAULT_OPTS=" \
     --inline-info \
     --height '70%' \
     --color=dark,bg:#282c34,bg+:#2c323c,fg:#979eab,fg+:#aa6e90 \
-    --color=hl+:#98c379,hl:#98c379,pointer:#aa6e90,marker:#ffffff,gutter:#282c34 \
+    --color=hl+:#98c379,hl:#98c379,pointer:#aa6e90,marker:#aa6e90,gutter:#282c34 \
     --color=info:#61afef,prompt:#61afef,spinner:#98c379,header:#e5c07b"
 
 # Lang
@@ -86,10 +86,9 @@ export PATH=$HOME/.local/python/bin:$PATH
 export PYTHONPATH=$HOME/.local/python
 
 # rust
-export PATH="$HOME/.cargo/bin:$PATH"
+# export CARGO_HOME=$HOME/.cargo
+export PATH=$HOME/.cargo/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-# export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-# export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 # Node
 export NVM_DIR="$HOME/.nvm"

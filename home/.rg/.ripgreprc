@@ -4,17 +4,18 @@
 --smart-case
 --auto-hybrid-regex
 --sortr=modified
---ignore-file=/Users/ray/.rgignore
+--ignore-file=/Users/ray/.rg/.rgignore
 --ignore-file=/Users/ray/.gitignore
 
 # ui
---colors=path:fg:green
+--colors=path:fg:yellow
+--colors=path:style:underline
 
---colors=match:fg:red
+--colors=match:fg:green
 --colors=match:style:bold
 
 --colors=line:fg:blue
 --colors=line:style:bold
 
 --colors=column:fg:blue
---colors=column:style:bold
+--colors=line:style:bold

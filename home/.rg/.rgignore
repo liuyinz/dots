@@ -5,19 +5,9 @@
 Music/
 log/
 Pictures/
-.config/coc/
-.local/
-.cargo/
-.ssh/
 .log/
 .Trash/
-.snipaste/
-.iterm2/
 .bundle
-.cheat/
-.vim/
-.gem/
-.npm/
 .ipython/
 .sip_v1/
 .subversion/
@@ -25,7 +15,6 @@ Pictures/
 .Library/
 .vscode/
 .cache/
-.tldrc/
 node_modules/
 npm-global/
 Library/

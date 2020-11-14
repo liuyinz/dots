@@ -17,6 +17,7 @@ alias ap="ALL_PROXY=socks5://$SOCKS"
 alias eap="export ALL_PROXY=socks5://$SOCKS"
 alias ueap="unset ALL_PROXY"
 alias pc="proxychains4"
+alias rr="ranger"
 # alias ssha='ssh root@157.245.125.95'
 
 # App

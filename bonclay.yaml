@@ -11,48 +11,52 @@ sync:
   overwrite: true
 
 spec:
+  # terminal
+  ~/.config/kitty: term/kitty
+  ~/.config/com.googlecode.iterm2.plist: term/iterm2.plist
+  # 24bits
+  ~/.terminfo: term/terminfo
+  # theme
+  ~/.config/starship.toml: term/starship.toml
   # zsh
+  ~/.zsh: zsh
   ~/.zshrc: zsh/.zshrc
   ~/.zshenv: zsh/.zshenv
   ~/.zprofile: zsh/.zprofile
-  # ~/.p10k.zsh: zsh/.p10k.zsh
-  ~/.zsh: zsh
-  ~/.terminfo: terminfo
-  ~/.config/kitty: config/kitty
-  ~/.config/starship.toml: config/starship.toml
-
-  ~/bin: bin
 
   # git
   ~/.gitconfig: git/.gitconfig
   ~/.gitignore: git/.gitignore
   ~/.gitmessage: git/.gitmessage
+  ~/Library/Application\ Support/jesseduffield/lazygit/config.yml: git/lazygit.yml
 
-  # lang
-  ~/.prettierrc.json: .prettierrc.json
-  ~/.eslintrc: .eslintrc
-  ~/.npmrcs: npmrcs
+  # JS
+  ~/.prettierrc.json: js/.prettierrc.json
+  ~/.eslintrc: js/.eslintrc
+  ~/.npmrcs: js/.npmrcs
+  # PY
+  ~/.pylintrc: py/.pylintrc
+  ~/.config/pip/pip.conf: py/pip.conf
 
-  ~/.shellcheckrc: .shellcheckrc
+  # home
+  ~/.curlrc: home/.curlrc
+  ~/.wgetrc: home/.wgetrc
+  ~/.gemrc: home/.gemrc
+  ~/.shellcheckrc: home/.shellcheckrc
+  ~/.clang-format: home/.clang-format
+  ~/.ssh/config: home/.ssh/config
+  ~/.cargo/config: home/.cargo/config
+  ~/.rg: home/.rg
 
-  ~/.pylintrc: .pylintrc
-  ~/.config/pip/pip.conf: config/pip.conf
+  # self
+  ~/bin: bin
 
-  ~/.clang-format: .clang-format
-
-  ~/.cargo/config: cargo/config
-
-  ~/.gemrc: .gemrc
-
-  # tool
-  ~/.ripgreprc: .ripgreprc
-  ~/.rgignore: .rgignore
-  ~/.ssh/config: ssh/config
+  # config
   ~/.config/lf/lfrc: config/lfrc
   ~/.config/htop/htoprc: config/htoprc
-  ~/.config/proxychains.conf: proxychains.conf
+  ~/.config/proxychains.conf: config/proxychains.conf
+  ~/.config/bat/config: config/bat/config
 
   # macos
-  # ~/.config/com.googlecode.iterm2.plist: config/iterm2.plist
   ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
   ~/.config/karabiner/assets: config/karabiner/assets
