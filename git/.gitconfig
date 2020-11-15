@@ -9,20 +9,20 @@
   email = cheunghsu@outlook.com
 
 [core]
-    # editor = code --wait
+  # editor = code --wait
   editor = nvim
   autocrlf = input
-    # pager = less --tabs=4
+  # pager = less --tabs=4
   pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/ray/.gitignore
 
 [interactive]
-	difffilter = (echo && diff-so-fancy)
+  difffilter = (echo && diff-so-fancy)
 
 [diff-so-fancy]
   useUnicodeRuler = false
-  rulerWidth = 67
-	stripLeadingSymbols = false
+  rulerWidth = 58
+  changeHunkIndicators = false
 
 [color]
   ui = true
@@ -58,6 +58,10 @@
 
 [color "blame"]
   repeatedLines = green
+
+[log]
+  abbrevCommit = true
+  decorate = no
 
 [format]
   pretty = %Cred%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
