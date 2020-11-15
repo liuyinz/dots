@@ -5,8 +5,10 @@
 
 # Zsh
 # -----------------------
+export CONFIG_DIR=$HOME/.config
 export CACHE_DIR=$HOME/.cache
-export ZCACHE=$HOME/.cache/zsh
+
+export ZCACHE=$CACHE_DIR/zsh
 
 # ZPLUG
 # -----------------------
@@ -21,18 +23,19 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # terminfo
-export TERM=xterm-24bit
+# export TERM=xterm-24bit
 
 # proxy
 export SOCKS=127.0.0.1:4781
 export HTTPS=127.0.0.1:4780
-export PROXYCHAINS_CONF_FILE=$HOME/.config/proxychains.conf
+export PROXYCHAINS_CONF_FILE=$CONFIG_DIR/proxychains.conf
 
 # misc
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR="nvim"
-export PAGER=less
+export PAGER="less --tabs=4"
+export GIT_PAGER="diff-so-fancy | less --tabs=4 -RFX"
 export LESSHISTFILE=$CACHE_DIR/.lesshst
 # gls
 export TIME_STYLE="+%y-%m-%d %H:%M"
@@ -61,7 +64,7 @@ export _ZL_ADD_ONCE=1
 export _ZL_MATCH_MODE=1
 export _ZL_HYPHEN=1
 export _ZL_ROOT_MARKERS=".git,.svn,.hg,.root,package.json"
-export _ZL_EXCLUDE_DIRS="$HOME/.cache,$HOME/Library"
+export _ZL_EXCLUDE_DIRS="$CACHE_DIR,$HOME/Library"
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -86,7 +89,6 @@ export PATH=$HOME/.local/python/bin:$PATH
 export PYTHONPATH=$HOME/.local/python
 
 # rust
-# export CARGO_HOME=$HOME/.cargo
 export PATH=$HOME/.cargo/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
