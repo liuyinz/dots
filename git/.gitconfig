@@ -9,20 +9,20 @@
   email = cheunghsu@outlook.com
 
 [core]
-    # editor = code --wait
+  # editor = code --wait
   editor = nvim
   autocrlf = input
-    # pager = less -x1,5
-  pager = diff-so-fancy | less -x1,5 -RFX
+  # pager = less --tabs=4
+  pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/ray/.gitignore
 
 [interactive]
-	difffilter = diff-so-fancy
+  difffilter = (echo && diff-so-fancy)
 
 [diff-so-fancy]
   useUnicodeRuler = false
-  rulerWidth = 67
-	stripLeadingSymbols = false
+  rulerWidth = 58
+  changeHunkIndicators = false
 
 [color]
   ui = true
@@ -33,16 +33,16 @@
 # See https://git-scm.com/docs/git-config#Documentation/git-config.txt-color
 [color "diff"]
   meta = yellow bold
-  commit = green bold
   frag = blue bold
-  old = red bold
-  new = green bold
+  commit = green bold
+  old = red
+  new = green
   whitespace = red reverse
 
 [color "diff-highlight"]
-  oldNormal = red bold
+  oldNormal = red
   oldHighlight = black bold red
-  newNormal = green bold
+  newNormal = green
   newHighlight = black bold green
 
 [credential]
@@ -58,6 +58,10 @@
 
 [color "blame"]
   repeatedLines = green
+
+[log]
+  abbrevCommit = true
+  decorate = no
 
 [format]
   pretty = %Cred%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
@@ -84,7 +88,7 @@
   tool = vscode
 [difftool]
   prompt = false
-[difftool "kkkvs"]
+[difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 
 [merge]
