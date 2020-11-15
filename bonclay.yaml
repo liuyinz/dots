@@ -13,9 +13,9 @@ sync:
 spec:
   # terminal
   ~/.config/kitty: term/kitty
-  ~/.config/com.googlecode.iterm2.plist: term/iterm2.plist
+  # ~/.config/com.googlecode.iterm2.plist: term/iterm2.plist
   # 24bits
-  ~/.terminfo: term/terminfo
+  # ~/.terminfo: term/terminfo
   # theme
   ~/.config/starship.toml: term/starship.toml
   # zsh
@@ -28,7 +28,7 @@ spec:
   ~/.gitconfig: git/.gitconfig
   ~/.gitignore: git/.gitignore
   ~/.gitmessage: git/.gitmessage
-  ~/Library/Application\ Support/jesseduffield/lazygit/config.yml: git/lazygit.yml
+  ~/.config/config.yml: git/lazygit.yml
 
   # JS
   ~/.prettierrc.json: js/.prettierrc.json
@@ -56,6 +56,7 @@ spec:
   ~/.config/htop/htoprc: config/htoprc
   ~/.config/proxychains.conf: config/proxychains.conf
   ~/.config/bat/config: config/bat/config
+  ~/.config/ranger: config/ranger
 
   # macos
   ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
