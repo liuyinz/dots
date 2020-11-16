@@ -3,78 +3,138 @@
 # uncomment this and the last line for zprof info
 # zmodload zsh/zprof
 
+export ALL_PROXY=http://${HTTP}
+
 # use emacs-style keybinds
 bindkey -e
 
-# Zplug Start
-# -----------------------
-
-# zplug configruation
-if [[ ! -d "${ZPLUG_HOME}" ]]; then
-	if [[ ! -d "${ZCACHE}/zplug" ]]; then
-		git clone https://github.com/zplug/zplug "${ZCACHE}/zplug"
-		if [[ $? != 0 ]]; then
-			function zplug() {
-				return 1
-			}
-		fi
-	fi
-	export ZPLUG_HOME="${ZCACHE}/zplug"
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-[[ -d "${ZPLUG_HOME}" ]] && source "${ZPLUG_HOME}/init.zsh"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Zplug pluggin
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-# zplug 'romkatv/powerlevel10k', as:theme, depth:1
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'liuyinz/zsh-completions', defer:2
-zplug "zdharma/fast-syntax-highlighting", defer:3
-zplug "lincheney/fzf-tab-completion"
-# tool
-zplug "skywind3000/z.lua"
-zplug "plugins/osx", from:oh-my-zsh
-# zplug "plugins/gnu-utils", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/fzf", from:oh-my-zsh
-zplug "plugins/vscode", from:oh-my-zsh
-zplug "plugins/dash", from:oh-my-zsh
-# git
-zplug "plugins/github", from:oh-my-zsh
-zplug "plugins/gitignore", from:oh-my-zsh
-# rust
-zplug "plugins/rust", from:oh-my-zsh
-zplug "plugins/rustup", from:oh-my-zsh
-zplug "plugins/cargo", from:oh-my-zsh
-# nvm
-zplug "lukechilds/zsh-nvm" #install nvm
-zplug "plugins/nvm", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-# python
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/pylint", from:oh-my-zsh
+### End of Zinit's installer chunk
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-	zplug install
-fi
+# --------------------------------
+# Functions
+# ---------------------------------
 
-# Zplug load  --verbose
-zplug load
+z_lucid() {
+    zinit ice lucid "$@"
+}
 
-# plug setting
-# -----------------------
-if zplug check 'zsh-users/zsh-autosuggestions'; then
-	ZSH_AUTOSUGGEST_USE_ASYNC=1
-	ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-	bindkey ",," autosuggest-accept
-fi
+zi_a() {
+    z_lucid wait'0a' "$@"
+}
+zi_b() {
+    z_lucid wait'0b' "$@"
+}
 
-if zplug check 'lincheney/fzf-tab-completion'; then
-	source "${ZPLUG_REPOS}/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
-	# zstyle ':completion:*' fzf-search-display true
-fi
+zi_c() {
+    z_lucid wait'0c' "$@"
+}
+
+zi_pr() {
+    zi_a as'program' "$@"
+}
+
+zi_cm() {
+    zi_a as'completion' "$@"
+}
+
+
+# --------------------------------
+# theme
+# --------------------------------
+z_lucid from"gh-r" as"program" bpick"*apple-darwin*" pick"starship" atload'eval "$(starship init zsh)"'
+zinit light starship/starship
+
+# zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+# zinit load starship/starship
+
+# --------------------------------
+# Tool
+# ---------------------------------
+
+z_lucid
+zinit light skywind3000/z.lua
+
+# install NVM
+z_lucid
+zinit light lukechilds/zsh-nvm
+
+zinit wait lucid for \
+    OMZP::fzf \
+    OMZP::sudo \
+    OMZP::colored-man-pages \
+    OMZP::vscode \
+    OMZP::dash \
+    OMZP::github \
+    OMZP::gitignore \
+    OMZP::nvm \
+    OMZP::npm
+
+
+# --------------------------------
+# Completion Colletion
+# ---------------------------------
+
+# git-extra
+zi_cm has'git-extras'
+zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
+
+# tldr
+zi_cm has'tldr' mv"zsh_tealdeer -> _tldr"
+zinit snippet https://github.com/dbrgn/tealdeer/blob/master/zsh_tealdeer
+
+zi_cm has'hub' mv'hub.zsh_completion -> _hub'
+zinit snippet https://github.com/github/hub/raw/master/etc/hub.zsh_completion
+
+zinit lucid wait as"completion" for \
+    OMZP::pip/_pip \
+    OMZP::pylint/_pylint \
+    OMZP::nvm/_nvm
+
+
+# --------------------------------
+# Zsh
+# ---------------------------------
+# AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+zi_a atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+bindkey ",," autosuggest-accept
+
+# fzf-tab
+# z_lucid wait'1'
+# zinit light Aloxaf/fzf-tab
+
+zi_c pick"zsh/fzf-zsh-completion.sh"
+zinit light lincheney/fzf-tab-completion
+
+zi_c blockf atpull"zinit creinstall -q ."
+zinit light zsh-users/zsh-completions
+
+# SYNTAX HIGHLIGHTING
+zi_c atinit"zpcompinit;zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
+# zinit ice lucid wait"5"; zinit light zsh-users/zsh-syntax-highlighting
+
+# generate by cmd
+autoload -Uz compinit
+compinit
+command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
+# command -v pip >/dev/null && . <(pip completion --zsh)
 
 # options
 # -----------------------
@@ -152,31 +212,11 @@ zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
 zstyle ':completion:*' single-ignored show
 
-typeset -U PATH
+# typeset -U PATH
 
-autoload -Uz compinit
-() {
-  setopt extendedglob local_options
-  local zcd=${ZCACHE}/.zcompdump
-  local zcdl=${ZCACHE}/.zcompdump(N.m+1)
-  local zcdc="$zcd.zwc"
-  if [[ -f "$zcdl" ]]; then
-    compinit -i -d "$zcd"
-    { rm -f "$zcdc" && zcompile "$zcd" } &!
-  else
-    compinit -C -d "$zcd"
-    { [[ ! -f "$zcdc" || "$zcd" -nt "$zcdc" ]] && rm -f "$zcdc" && zcompile "$zcd" } &!
-  fi
-}
 source ~/.zsh/alias.sh
 source ~/.zsh/func.sh
 
-# Kitty
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
-
-eval "$(starship init zsh)"
+export ALL_PROXY=
 # uncomment the line below to profile
 # zprof | less
