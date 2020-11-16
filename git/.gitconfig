@@ -1,5 +1,5 @@
 # git config --global --unset http.proxy
-# git config --global http.proxy "socks5://$SOCKS"
+# git config --global http.proxy "http://$HTTP"
 
 [apply]
   whitespace = nowarn
@@ -79,10 +79,10 @@
   postBuffer = 524288000
 
 [http "https://github.com"]
-  proxy = socks5://127.0.0.1:4781
+  proxy = http://127.0.0.1:4780
 
 [https "https://github.com"]
-  proxy = socks5://127.0.0.1:4781
+  proxy = http://127.0.0.1:4780
 
 [diff]
   tool = vscode

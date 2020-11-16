@@ -13,20 +13,19 @@ alias lla='gls -lhAF --color --group-directories-first'
 alias du="du -h"
 alias df="df -h"
 
-alias ap="ALL_PROXY=socks5://$SOCKS"
-alias eap="export ALL_PROXY=socks5://$SOCKS"
-alias ueap="unset ALL_PROXY"
+alias ap="ALL_PROXY=http://$HTTP"
+alias eap="export ALL_PROXY=http://$HTTP"
+alias uap="export ALL_PROXY="
 # alias ssha='ssh root@157.245.125.95'
 
 # App
 # -----------------------
-# alias git='hub'
 alias asr='alias | rg'
 alias rt='rmtrash'
+alias rr="ranger"
 alias vi='nvim'
 alias lg='lazygit'
 alias pc="proxychains4"
-alias rr="ranger"
 
 # bonclay
 alias bb='cd ~/dots && bonclay backup bonclay.yaml'

@@ -27,7 +27,7 @@ export PATH=$HOME/bin:$PATH
 
 # proxy
 export SOCKS=127.0.0.1:4781
-export HTTPS=127.0.0.1:4780
+export HTTP=127.0.0.1:4780
 export PROXYCHAINS_CONF_FILE=$CONFIG_DIR/proxychains.conf
 
 # misc
