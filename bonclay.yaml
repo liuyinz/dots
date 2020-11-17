@@ -34,13 +34,14 @@ spec:
   ~/.prettierrc.json: js/.prettierrc.json
   ~/.eslintrc: js/.eslintrc
   ~/.npmrcs: js/.npmrcs
+  ~/.nvm/default-packages: js/default-packages
   # PY
   ~/.pylintrc: py/.pylintrc
   ~/.config/pip/pip.conf: py/pip.conf
 
   # home
-  ~/.curlrc: home/.curlrc
-  ~/.wgetrc: home/.wgetrc
+  # ~/.curlrc: home/.curlrc
+  # ~/.wgetrc: home/.wgetrc
   ~/.gemrc: home/.gemrc
   ~/.shellcheckrc: home/.shellcheckrc
   ~/.clang-format: home/.clang-format
