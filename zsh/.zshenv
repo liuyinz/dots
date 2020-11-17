@@ -5,9 +5,10 @@
 
 # Zsh
 # -----------------------
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export ZCACHE=$XDG_CACHE_HOME/zcache
+export CONFIG_HOME=$HOME/.config
+export CACHE_HOME=$HOME/.cache
+export DATA_HOME=$HOME/.local
+export ZCACHE=$CACHE_HOME/zcache
 
 # misc
 # -----------------------
@@ -15,7 +16,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TIME_STYLE="+%y-%m-%d %H:%M"
 export PAGER="less --tabs=4"
-export LESSHISTFILE=$XDG_CACHE_HOME/.lesshst
+export LESSHISTFILE=$CACHE_HOME/.lesshst
 
 # PATH
 # -----------------------
@@ -46,10 +47,10 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH=$XDG_XONFIG_HOME/rg/.ripgreprc
+export RIPGREP_CONFIG_PATH=$CONFIG_HOME/rg/.ripgreprc
 
 # proxychains-ng
-export PROXYCHAINS_CONF_FILE=$XDG_CONFIG_HOME/proxychains.conf
+export PROXYCHAINS_CONF_FILE=$CONFIG_HOME/proxychains.conf
 
 # z.lua
 export _ZL_DATA=$ZCACHE/.zlua
@@ -57,7 +58,7 @@ export _ZL_ADD_ONCE=1
 export _ZL_MATCH_MODE=1
 export _ZL_HYPHEN=1
 export _ZL_ROOT_MARKERS=".git,.svn,.hg,.root,package.json"
-export _ZL_EXCLUDE_DIRS="$XDG_CACHE_HOME,$HOME/Library"
+export _ZL_EXCLUDE_DIRS="$CACHE_HOME,$HOME/Library"
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -78,15 +79,16 @@ export FZF_DEFAULT_OPTS=" \
 # Lang
 # -----------------------
 # pip
-export PYTHONPATH=$HOME/.local/python
-export PATH=$HOME/.local/python/bin:$PATH
+export PYTHONPATH=$DATA_HOME/python
+export PATH=$PYTHONPATH/bin:$PATH
 
 # rust
-export PATH=$HOME/.cargo/bin:$PATH
+export CARGO_HOME=$CONFIG_HOME/cargo
+export PATH=$CARGO_HOME/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 # Node
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR=$DATA_HOME/nvm
 export PATH="$NVM_DIR/versions/node/v15.2.1/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true

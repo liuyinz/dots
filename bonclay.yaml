@@ -13,9 +13,6 @@ sync:
 spec:
   # terminal
   ~/.config/kitty: term/kitty
-  # ~/.config/com.googlecode.iterm2.plist: term/iterm2.plist
-  # 24bits
-  # ~/.terminfo: term/terminfo
   # theme
   ~/.config/starship.toml: term/starship.toml
   # zsh
@@ -28,13 +25,14 @@ spec:
   ~/.gitconfig: git/.gitconfig
   ~/.gitignore: git/.gitignore
   ~/.gitmessage: git/.gitmessage
-  ~/.config/config.yml: git/lazygit.yml
+  # ~/.config/config.yml: git/lazygit.yml
+  ~/Library/Application Support/jesseduffield/lazygit/config.yml: git/lazygit.yml
 
   # JS
   ~/.prettierrc.json: js/.prettierrc.json
   ~/.eslintrc: js/.eslintrc
   ~/.npmrcs: js/.npmrcs
-  ~/.nvm/default-packages: js/default-packages
+  ~/.local/nvm/default-packages: js/default-packages
   # PY
   ~/.pylintrc: py/.pylintrc
   ~/.config/pip/pip.conf: py/pip.conf
@@ -46,8 +44,7 @@ spec:
   ~/.shellcheckrc: home/.shellcheckrc
   ~/.clang-format: home/.clang-format
   ~/.ssh/config: home/.ssh/config
-  ~/.cargo/config: home/.cargo/config
-  ~/.config/rg: home/rg
+
 
   # self
   ~/bin: bin
@@ -57,7 +54,9 @@ spec:
   ~/.config/htop/htoprc: config/htoprc
   ~/.config/proxychains.conf: config/proxychains.conf
   ~/.config/bat/config: config/bat/config
+  ~/.config/cargo/config: config/cargo/config
   ~/.config/ranger: config/ranger
+  ~/.config/rg: config/rg
 
   # macos
   ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
