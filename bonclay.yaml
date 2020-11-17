@@ -47,7 +47,7 @@ spec:
   ~/.clang-format: home/.clang-format
   ~/.ssh/config: home/.ssh/config
   ~/.cargo/config: home/.cargo/config
-  ~/.rg: home/.rg
+  ~/.config/rg: home/rg
 
   # self
   ~/bin: bin
