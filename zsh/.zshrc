@@ -20,7 +20,6 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
 ### End of Zinit's installer chunk
 
 # --------------------------------
@@ -34,6 +33,7 @@ z_lucid() {
 zi_a() {
     z_lucid wait'0a' "$@"
 }
+
 zi_b() {
     z_lucid wait'0b' "$@"
 }
@@ -43,22 +43,36 @@ zi_c() {
 }
 
 zi_pr() {
-    zi_a as'program' "$@"
+    z_lucid as'program' "$@"
 }
 
 zi_cm() {
-    zi_a as'completion' "$@"
+    z_lucid as'completion' "$@"
 }
 
+# test for install
+tool_install(){
+    CmdTools=( \
+        'hub' 'lazygit' 'diff-so-fancy''git-flow-avh' 'git-extras' \
+        'rmtrash' 'prettyping' 'bat' 'htop' 'fzf' 'ranger' 'ripgrep' 'starship' \
+    )
+
+    for i in $CmdTools; do
+        brew ls --versions $i > /dev/null || brew install $i
+    done
+}
 
 # --------------------------------
-# theme
-# --------------------------------
-z_lucid from"gh-r" as"program" bpick"*apple-darwin*" pick"starship" atload'eval "$(starship init zsh)"'
-zinit light starship/starship
+# Completion Colletion
+# ---------------------------------
 
-# zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
-# zinit load starship/starship
+# git-extra
+zi_cm has'git-extras'
+zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
+
+zinit lucid wait as"completion" for \
+    OMZP::nvm/_nvm \
+    OMZP::pip/_pip
 
 # --------------------------------
 # Tool
@@ -79,34 +93,10 @@ zinit wait lucid for \
     OMZP::dash \
     OMZP::github \
     OMZP::gitignore \
+    OMZP::git-flow-avh \
     OMZP::nvm \
     OMZP::npm
 
-
-# --------------------------------
-# Completion Colletion
-# ---------------------------------
-
-# git-extra
-zi_cm has'git-extras'
-zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
-
-# tldr
-zi_cm has'tldr' mv"zsh_tealdeer -> _tldr"
-zinit snippet https://github.com/dbrgn/tealdeer/blob/master/zsh_tealdeer
-
-zi_cm has'hub' mv'hub.zsh_completion -> _hub'
-zinit snippet https://github.com/github/hub/raw/master/etc/hub.zsh_completion
-
-zinit lucid wait as"completion" for \
-    OMZP::pip/_pip \
-    OMZP::pylint/_pylint \
-    OMZP::nvm/_nvm
-
-
-# --------------------------------
-# Zsh
-# ---------------------------------
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -116,11 +106,8 @@ zinit light zsh-users/zsh-autosuggestions
 bindkey ",," autosuggest-accept
 
 # fzf-tab
-# z_lucid wait'1'
-# zinit light Aloxaf/fzf-tab
-
-zi_c pick"zsh/fzf-zsh-completion.sh"
-zinit light lincheney/fzf-tab-completion
+z_lucid atload"zpcompinit"
+zinit light Aloxaf/fzf-tab
 
 zi_c blockf atpull"zinit creinstall -q ."
 zinit light zsh-users/zsh-completions
@@ -128,28 +115,17 @@ zinit light zsh-users/zsh-completions
 # SYNTAX HIGHLIGHTING
 zi_c atinit"zpcompinit;zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
-# zinit ice lucid wait"5"; zinit light zsh-users/zsh-syntax-highlighting
 
-# generate by cmd
-autoload -Uz compinit
-compinit
-command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
-# command -v pip >/dev/null && . <(pip completion --zsh)
+export ALL_PROXY=
 
+# --------------------------------
 # options
-# -----------------------
-# hist
-export HISTFILE="${ZCACHE}/.zsh_history"
-export HISTSIZE=1000000000
-export SAVEHIST=$HISTSIZE
-export HISTTIMEFORMAT="[%F %T] "
+# ---------------------------------
 
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
-
 setopt HIST_FIND_NO_DUPS
 # setopt HIST_IGNORE_ALL_DUPS
-
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -171,6 +147,11 @@ setopt AUTO_PUSHD
 # setopt LIST_PACKED
 # setopt AUTO_PARAM_SLASH
 
+# hist
+export HISTFILE="${ZCACHE}/.zsh_history"
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+export HISTTIMEFORMAT="[%F %T] "
 
 # zstyle ':completion:incremental:*'  menu select=2 search
 # zstyle :incremental stop-keys $'[\e\C-b\C-f\C-n\C-p\C-u-\C-x]'
@@ -212,11 +193,14 @@ zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
 zstyle ':completion:*' single-ignored show
 
-# typeset -U PATH
-
 source ~/.zsh/alias.sh
 source ~/.zsh/func.sh
 
-export ALL_PROXY=
+# generate by cmd
+autoload -Uz compinit
+compinit
+command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
 # uncomment the line below to profile
 # zprof | less

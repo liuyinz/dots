@@ -53,7 +53,11 @@ bip() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      [[ $(command -v -- "$prog") ]] || brew install "$prog"
+      if brew ls --versions $prog >/dev/null; then
+        echo "$prog already installed."
+      else
+        brew install $prog
+      fi
     done
   fi
 }
@@ -66,7 +70,11 @@ bci() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      brew cask install "$prog"
+      if brew ls --cask --versions $prog >/dev/null; then
+        echo "$prog already installed."
+      else
+        brew install $prog
+      fi
     done
   fi
 }
