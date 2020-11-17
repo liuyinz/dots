@@ -148,7 +148,7 @@ setopt AUTO_PUSHD
 # setopt AUTO_PARAM_SLASH
 
 # hist
-export HISTFILE="${ZCACHE}/.zsh_history"
+export HISTFILE=$ZCACHE/.zsh_history
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 export HISTTIMEFORMAT="[%F %T] "

@@ -28,9 +28,9 @@ alias lg='lazygit'
 alias pc="proxychains4"
 
 # bonclay
-alias bb='cd ~/dots && bonclay backup bonclay.yaml'
-alias bs='cd ~/dots && bonclay sync bonclay.yaml'
-alias br='cd ~/dots && bonclay restore bonclay.yaml'
+alias bb='bonclay backup ~/dots/bonclay.yaml'
+alias bs='bonclay sync ~/dots/bonclay.yaml'
+alias br='bonclay restore ~/dots/bonclay.yaml'
 
 # Scripts
 # -----------------------
