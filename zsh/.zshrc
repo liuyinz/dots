@@ -58,7 +58,7 @@ zinit lucid wait'1' as"completion" for \
 # Tool
 # ---------------------------------
 
-z_il atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh'
+z_il wait atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh'
 zinit light trapd00r/LS_COLORS
 
 z_il wait
