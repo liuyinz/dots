@@ -3,7 +3,7 @@
 # uncomment this and the last line for zprof info
 # zmodload zsh/zprof
 
-export ALL_PROXY=http://${HTTP}
+export ALL_PROXY=http://$HTTP
 
 # use emacs-style keybinds
 bindkey -e
@@ -57,6 +57,9 @@ zinit lucid wait'1' as"completion" for \
 # --------------------------------
 # Tool
 # ---------------------------------
+
+z_il atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh'
+zinit light trapd00r/LS_COLORS
 
 z_il wait
 zinit light skywind3000/z.lua
