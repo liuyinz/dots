@@ -26,28 +26,8 @@ autoload -Uz _zinit
 # Functions
 # ---------------------------------
 
-z_lucid() {
+z_il() {
     zinit ice lucid "$@"
-}
-
-zi_a() {
-    z_lucid wait'0a' "$@"
-}
-
-zi_b() {
-    z_lucid wait'0b' "$@"
-}
-
-zi_c() {
-    z_lucid wait'0c' "$@"
-}
-
-zi_pr() {
-    z_lucid as'program' "$@"
-}
-
-zi_cm() {
-    z_lucid as'completion' "$@"
 }
 
 # test for install
@@ -67,10 +47,10 @@ tool_install(){
 # ---------------------------------
 
 # git-extra
-zi_cm has'git-extras'
+z_il wait'1' as"completion" has'git-extras'
 zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
 
-zinit lucid wait as"completion" for \
+zinit lucid wait'1' as"completion" for \
     OMZP::nvm/_nvm \
     OMZP::pip/_pip
 
@@ -78,14 +58,14 @@ zinit lucid wait as"completion" for \
 # Tool
 # ---------------------------------
 
-z_lucid
+z_il wait
 zinit light skywind3000/z.lua
 
 # install NVM
-z_lucid
+z_il wait"1"
 zinit light lukechilds/zsh-nvm
 
-zinit wait lucid for \
+zinit wait'1' lucid for \
     OMZP::fzf \
     OMZP::sudo \
     OMZP::colored-man-pages \
@@ -101,19 +81,19 @@ zinit wait lucid for \
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-zi_a atload"_zsh_autosuggest_start"
+z_il wait atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 bindkey ",," autosuggest-accept
 
 # fzf-tab
-z_lucid atload"zpcompinit"
+z_il wait atload"zpcompinit"
 zinit light Aloxaf/fzf-tab
 
-zi_c blockf atpull"zinit creinstall -q ."
+z_il wait"1" as"completion" blockf atpull"zinit creinstall -q ."
 zinit light zsh-users/zsh-completions
 
 # SYNTAX HIGHLIGHTING
-zi_c atinit"zpcompinit;zpcdreplay"
+z_il wait atinit"zpcompinit;zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 export ALL_PROXY=
