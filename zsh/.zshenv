@@ -51,7 +51,8 @@ export RIPGREP_CONFIG_PATH=$CONFIG_HOME/rg/.ripgreprc
 
 # proxychains-ng
 export PROXYCHAINS_CONF_FILE=$CONFIG_HOME/proxychains.conf
-
+# bat
+export BAT_CONFIG_PATH=$CONFIG_HOME/bat.conf
 # z.lua
 export _ZL_DATA=$ZCACHE/.zlua
 export _ZL_ADD_ONCE=1
@@ -61,19 +62,19 @@ export _ZL_ROOT_MARKERS=".git,.svn,.hg,.root,package.json"
 export _ZL_EXCLUDE_DIRS="$CACHE_HOME,$HOME/Library"
 
 # fzf
+# export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS=" \
-    --ansi \
     --reverse \
     --cycle \
     --multi \
     --sort \
-    --marker '+' \
+    --marker '*' \
     --inline-info \
     --height '70%' \
     --color=dark,bg:#282c34,bg+:#2c323c,fg:#979eab,fg+:#aa6e90 \
-    --color=hl+:#98c379,hl:#98c379,pointer:#aa6e90,marker:#aa6e90,gutter:#282c34 \
+    --color=hl+:#98c379,hl:#98c379,pointer:#aa6e90,marker:#e5c07b,gutter:#282c34 \
     --color=info:#61afef,prompt:#61afef,spinner:#98c379,header:#e5c07b"
 
 # Lang

@@ -43,7 +43,7 @@ spec:
   ~/.gemrc: home/.gemrc
   ~/.shellcheckrc: home/.shellcheckrc
   ~/.clang-format: home/.clang-format
-  ~/.ssh/config: home/.ssh/config
+  ~/.ssh/config: home/ssh_config
 
 
   # self
@@ -53,8 +53,8 @@ spec:
   ~/.config/lf/lfrc: config/lfrc
   ~/.config/htop/htoprc: config/htoprc
   ~/.config/proxychains.conf: config/proxychains.conf
-  ~/.config/bat/config: config/bat/config
-  ~/.config/cargo/config: config/cargo/config
+  ~/.config/bat.conf: config/bat.conf
+  ~/.config/cargo/config: config/cargo.toml
   ~/.config/ranger: config/ranger
   ~/.config/rg: config/rg
 

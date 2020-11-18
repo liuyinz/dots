@@ -1,0 +1,30 @@
+# 默认端口，https代理
+# Host github.com
+#    Hostname github.com
+#    User git
+#    ProxyCommand socat - PROXY:$HTTPS:%h:%p,proxyport=8080
+
+# 默认端口，socks5代理
+Host github.com
+   Hostname github.com
+   User git
+   ProxyCommand nc -v -x $SOCKS %h %p
+#
+# 443端口，https代理
+# Host github.com
+#    Hostname ssh.github.com
+#    Port 443
+#    User git
+#    ProxyCommand socat - PROXY:$HTTPS:%h:%p,proxyport=8080
+
+# 443端口，socks5代理
+# Host github.com
+#    Hostname ssh.github.com
+#    Port 443
+#    User git
+#    ProxyCommand nc -v -x $SOCKS %h %p
+
+
+# Host *
+#    ServerAliveInterval 120
+#    IPQoS lowdelay throughput
