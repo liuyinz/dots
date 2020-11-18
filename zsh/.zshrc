@@ -123,6 +123,8 @@ setopt inc_append_history_time
 setopt no_inc_append_history
 setopt no_share_history
 setopt AUTO_PUSHD
+# match hidden file
+setopt GLOB_DOTS
 
 # setopt autolist
 # setopt automenu
@@ -136,45 +138,51 @@ export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 export HISTTIMEFORMAT="[%F %T] "
 
-# zstyle ':completion:incremental:*'  menu select=2 search
-# zstyle :incremental stop-keys $'[\e\C-b\C-f\C-n\C-p\C-u-\C-x]'
-# remove whether display xxx lines?
-zstyle ':completion:*' list-prompt   ''
-zstyle ':completion:*' select-prompt ''
-zstyle ':completion:*' list-colors ''
-# Group results by category
-zstyle ':completion:*' group-name ''
+# cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path $ZCACHE/.zcompcache
+
+# 不展开普通别名
+# zstyle ':completion:*' regular false
+
 # Automatically update PATH entries
 zstyle ':completion:*' rehash true
-# Don't try parent path completion if the directories exist
-zstyle ':completion:*' accept-exact-dirs true
-zstyle ':completion:*' accet-exact '*(N)'
+
+# 结果样式
+zstyle ':completion:*' menu yes select # search
+zstyle ':completion:*' list-grouped false
+zstyle ':completion:*' list-separator ''
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:warnings' format '%F{red}%B-- No match for: %d --%b%f'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# 补全当前用户所有进程列表
+# 不要用 pid,user,comm,cmd，zsh 会一直读到
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+zstyle ':completion:*:kill:*' ignored-patterns '0'
+
+# 补全第三方 Git 子命令
+zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+
+# color
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 # Keep directories and files separated
 zstyle ':completion:*' list-dirs-first true
-# pasting with tabs doesn't perform completion
-zstyle ':completion:*' insert-tab pending
-# zstyle ':completion:*:*:*:default' menu yes select search
-zstyle ':completion:*' verbose true
-# case insensetive
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' use-cache 1
-zstyle ':completion:*' cache-path $ZCACHE
-# menu if nb items > 2
-zstyle ':completion:*' menu select=2 search
-# zstyle ':completion:*' menu select=2
-# Always use menu selection for `cd -`
-zstyle ':completion:*:*:cd:*:directory-stack' force-list always
-zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-# Nicer format for completion messages
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
-zstyle ':completion:*:warnings' format '%F{202}%BSorry, no matches for: %F{214}%d%b'
-# Prettier completion for processes
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
-zstyle ':completion:*' single-ignored show
+
+# 增强版文件名补全
+# 0 - 完全匹配 ( Abc -> Abc )      1 - 大写修正 ( abc -> Abc )
+# 2 - 单词补全 ( f-b -> foo-bar )  3 - 后缀补全 ( .cxx -> foo.cxx )
+zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
+    'm:{[:lower:]-}={[:upper:]_}' \
+    'r:|[.,_-]=* r:|=*' \
+    'r:|.=* r:|=*'# # case insensetive
+
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 source ~/.zsh/alias.sh
 source ~/.zsh/func.sh
