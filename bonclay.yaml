@@ -25,8 +25,9 @@ spec:
   ~/.gitconfig: git/.gitconfig
   ~/.gitignore: git/.gitignore
   ~/.gitmessage: git/.gitmessage
-  # ~/.config/config.yml: git/lazygit.yml
   ~/Library/Application Support/jesseduffield/lazygit/config.yml: git/lazygit.yml
+  # ~/.config/gh/config.yml: git/gh.yml
+  # ~/.config/config.yml: git/lazygit.yml
 
   # JS
   ~/.prettierrc.json: js/.prettierrc.json
