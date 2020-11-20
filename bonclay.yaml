@@ -44,6 +44,7 @@ spec:
   ~/.gemrc: home/.gemrc
   ~/.shellcheckrc: home/.shellcheckrc
   ~/.clang-format: home/.clang-format
+  # ~/.Brewfile: home/.Brewfile
   ~/.ssh/config: home/ssh_config
 
 

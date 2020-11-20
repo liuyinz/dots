@@ -211,3 +211,13 @@ zr() {
 # Create a folder and move into it in one command
 # -------------------
 mkcd() { mkdir -p "$@" && cd "$_"; }
+
+# brew clean useless dependence
+# -------------------
+# [B]rew [R]emove [D]ependence
+brd() {
+  brew bundle dump -q -f --file="/tmp/Brewfile"
+  brew bundle --cleanup --file="/tmp/Brewfile"
+  rm /tmp/Brewfile
+  # brew bundle dump -f --file=- | brew bundle --cleanup --file=-
+}
