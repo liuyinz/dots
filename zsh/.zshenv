@@ -55,6 +55,7 @@ export PROXYCHAINS_CONF_FILE=$CONFIG_HOME/proxychains.conf
 export BAT_CONFIG_PATH=$CONFIG_HOME/bat.conf
 # z.lua
 export _ZL_DATA=$ZCACHE/.zlua
+export _ZL_ECHO=1
 export _ZL_ADD_ONCE=0
 export _ZL_MATCH_MODE=0
 export _ZL_HYPHEN=1
