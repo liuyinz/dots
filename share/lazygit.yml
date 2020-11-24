@@ -11,7 +11,7 @@ gui:
       - yellow
       - bold
     inactiveBorderColor:
-      - white
+      - black
     optionsTextColor:
       - white
     selectedLineBgColor:
