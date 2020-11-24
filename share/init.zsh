@@ -30,18 +30,6 @@ z_il() {
     zinit ice lucid "$@"
 }
 
-# test for install
-tool_install(){
-    CmdTools=( \
-        'hub' 'lazygit' 'diff-so-fancy''git-flow-avh' 'git-extras' \
-        'rmtrash' 'prettyping' 'bat' 'htop' 'fzf' 'ranger' 'ripgrep' 'starship' \
-    )
-
-    for i in $CmdTools; do
-        brew ls --versions $i > /dev/null || brew install $i
-    done
-}
-
 # --------------------------------
 # Completion Colletion
 # ---------------------------------
@@ -184,8 +172,8 @@ zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
 
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
-source ~/.zsh/alias.sh
-source ~/.zsh/func.sh
+source $DOT_DIR/share/alias.sh
+source $DOT_DIR/share/func.sh
 
 # generate by cmd
 autoload -Uz compinit

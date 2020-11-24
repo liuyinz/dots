@@ -21,16 +21,16 @@ alias uap="export ALL_PROXY="
 # App
 # -----------------------
 alias asr='alias | rg'
-alias rt='rmtrash'
+alias rt='trash'
 alias rr="ranger"
 alias vi='nvim'
 alias lg='lazygit'
 alias pc="proxychains4"
 
 # bonclay
-alias bb='bonclay backup ~/dots/bonclay.yaml'
-alias bs='bonclay sync ~/dots/bonclay.yaml'
-alias br='bonclay restore ~/dots/bonclay.yaml'
+alias bb='bonclay backup'
+alias bs='bonclay sync'
+alias br='bonclay restore'
 
 # Scripts
 # -----------------------

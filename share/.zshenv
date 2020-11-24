@@ -9,6 +9,7 @@ export CONFIG_HOME=$HOME/.config
 export CACHE_HOME=$HOME/.cache
 export DATA_HOME=$HOME/.local
 export ZCACHE=$CACHE_HOME/zcache
+export DOT_DIR=$DATA_HOME/dotfile
 
 # misc
 # -----------------------
@@ -47,7 +48,7 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH=$CONFIG_HOME/rg/.ripgreprc
+export RIPGREP_CONFIG_PATH=$CONFIG_HOME/.ripgreprc
 
 # proxychains-ng
 export PROXYCHAINS_CONF_FILE=$CONFIG_HOME/proxychains.conf

@@ -1,0 +1,105 @@
+# git config --global --unset http.proxy
+# git config --global http.proxy "http://$HTTP"
+
+[apply]
+  whitespace = nowarn
+
+[user]
+  name = liuyinz
+  email = cheunghsu@outlook.com
+
+[core]
+  # editor = code --wait
+  editor = nvim
+  autocrlf = input
+  # pager = less --tabs=4
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  excludesfile = ~/.gitignore
+
+[interactive]
+  difffilter = (echo && diff-so-fancy)
+
+[diff-so-fancy]
+  useUnicodeRuler = false
+  rulerWidth = 58
+  changeHunkIndicators = false
+
+[color]
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
+
+# See https://git-scm.com/docs/git-config#Documentation/git-config.txt-color
+[color "diff"]
+  meta = yellow bold
+  frag = blue bold
+  commit = green bold
+  old = red
+  new = green
+  whitespace = red reverse
+
+[color "diff-highlight"]
+  oldNormal = red
+  oldHighlight = black bold red
+  newNormal = green
+  newHighlight = black bold green
+
+[credential]
+  helper = osxkeychain
+
+[commit]
+  template = /Users/ray/.gitmessage
+
+[blame]
+  date = short
+  coloring = repeatedLines
+  blankBoundary = true
+
+[color "blame"]
+  repeatedLines = green
+
+[log]
+  abbrevCommit = true
+  decorate = no
+
+[format]
+  pretty = %Cred%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[advice]
+  addEmptyPathspec = false
+
+[rerere]
+  enabled = true
+
+[hub]
+  protocol = https
+
+[http]
+  postBuffer = 524288000
+
+[diff]
+  tool = vscode
+[difftool]
+  prompt = false
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+  tool = vscode
+[mergetool]
+  keepBackup = false
+  prompt = false
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[pull]
+  rebase = false
+[log]
+	abbrevCommit = true
+	decorate = no

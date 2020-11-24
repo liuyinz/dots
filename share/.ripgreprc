@@ -4,7 +4,7 @@
 --smart-case
 --auto-hybrid-regex
 --sortr=modified
---ignore-file=/Users/ray/.config/rg/.rgignore
+--ignore-file=/Users/ray/.config/.rgignore
 --ignore-file=/Users/ray/.gitignore
 
 # ui
