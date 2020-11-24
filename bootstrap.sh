@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
-read -r -p "Sync which config ? [h(ome)|w(ork)] " response
+read -r -p "Sync which config ? [h(ome)|w(ork)] " use_config
+read -r -p "Sync nvim setting ? [y|n] " use_nvim
 
 # git clone respository
 cd ~/.local/
-if [ -d dotfile ]; then
-  cd dotfile
-  git pull
-else
-  git clone https://github.com/liuyinz/dotfile.git
-  cd dotfile
-fi
+echo "ensure $DOT_DIR are available..."
+[[ ! -d dotfile ]] && git clone https://github.com/liuyinz/dotfile.git
 
 # ###########################################################
 # install xcode
@@ -32,7 +28,7 @@ if ! xcode-select --print-path &>/dev/null; then
 fi
 
 # ###########################################################
-# install homebrew (CLI Packages)
+# install homebrew
 # ###########################################################
 
 echo "checking homebrew..."
@@ -62,10 +58,10 @@ echo "bundle installation finished."
 
 bonclay_installed_p=$(which bonclay) 2>&1 >/dev/null
 if [[ $? == 0 ]]; then
-  if [[ $response =~ (h|H|home|HOME) ]]; then
+  if [[ $use_config =~ (h|H|home|HOME) ]]; then
     echo "bonclay sync home.yaml"
     bonclay sync home.yaml
-  elif [[ $response =~ (w|W|work|WORK) ]]; then
+  elif [[ $use_config =~ (w|W|work|WORK) ]]; then
     echo "bonclay sync work.yaml"
     bonclay sync work.yaml
   else
@@ -76,7 +72,7 @@ else
 fi
 
 nvim_installed_p=$(which nvim) 2>&1 >/dev/null
-if [[ $? == 0 ]]; then
+if [[ $? == 0 ]] && [[ $use_nvim =~ (y|yes|Y) ]]; then
   echo "Cloning nvim setting..."
   rm -f ~/.config/nvim
   git clone https://github.com/liuyinz/nvim.git ~/.config/nvim
