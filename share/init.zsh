@@ -10,11 +10,11 @@ bindkey -e
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+  print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+  command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+  command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
@@ -27,7 +27,7 @@ autoload -Uz _zinit
 # ---------------------------------
 
 z_il() {
-    zinit ice lucid "$@"
+  zinit ice lucid "$@"
 }
 
 # --------------------------------
@@ -39,8 +39,8 @@ z_il wait'1' as"completion" has'git-extras'
 zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
 
 zinit lucid wait'1' as"completion" for \
-    OMZP::nvm/_nvm \
-    OMZP::pip/_pip
+  OMZP::nvm/_nvm \
+  OMZP::pip/_pip
 
 # --------------------------------
 # Tool
@@ -57,16 +57,16 @@ z_il wait"1"
 zinit light lukechilds/zsh-nvm
 
 zinit wait'1' lucid for \
-    OMZP::fzf \
-    OMZP::sudo \
-    OMZP::colored-man-pages \
-    OMZP::vscode \
-    OMZP::dash \
-    OMZP::github \
-    OMZP::gitignore \
-    OMZP::git-flow-avh \
-    OMZP::nvm \
-    OMZP::npm
+  OMZP::fzf \
+  OMZP::sudo \
+  OMZP::colored-man-pages \
+  OMZP::vscode \
+  OMZP::dash \
+  OMZP::github \
+  OMZP::gitignore \
+  OMZP::git-flow-avh \
+  OMZP::nvm \
+  OMZP::npm
 
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -166,9 +166,9 @@ zstyle ':completion:*' list-dirs-first true
 # 0 - 完全匹配 ( Abc -> Abc )      1 - 大写修正 ( abc -> Abc )
 # 2 - 单词补全 ( f-b -> foo-bar )  3 - 后缀补全 ( .cxx -> foo.cxx )
 zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
-    'm:{[:lower:]-}={[:upper:]_}' \
-    'r:|[.,_-]=* r:|=*' \
-    'r:|.=* r:|=*'# # case insensetive
+  'm:{[:lower:]-}={[:upper:]_}' \
+  'r:|[.,_-]=* r:|=*' \
+  'r:|.=* r:|=*'# # case insensetive
 
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 

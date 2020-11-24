@@ -23,7 +23,7 @@ export LESSHISTFILE=$CACHE_HOME/.lesshst
 # -----------------------
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-export PATH=$HOME/bin:$PATH
+export PATH=$DATA_HOME/bin:$PATH
 
 # proxy
 export SOCKS=127.0.0.1:4781
@@ -86,7 +86,7 @@ export PYTHONPATH=$DATA_HOME/python
 export PATH=$PYTHONPATH/bin:$PATH
 
 # rust
-export CARGO_HOME=$CONFIG_HOME/cargo
+export CARGO_HOME=$DATA_HOME/cargo
 export PATH=$CARGO_HOME/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 

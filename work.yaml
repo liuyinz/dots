@@ -28,7 +28,7 @@ spec:
   # JS
   ~/.prettierrc.json: share/.prettierrc.json
   ~/.eslintrc: share/.eslintrc
-  ~/.npmrcs: share/.npmrcs
+  ~/.npmrcs: share/npmrcs
   ~/.local/nvm/default-packages: share/default-packages
   # PY
   ~/.pylintrc: share/.pylintrc
@@ -42,9 +42,9 @@ spec:
   # config
   ~/.config/htop/htoprc: share/htoprc
   ~/.config/bat.conf: share/bat.conf
-  ~/.config/cargo/config: share/cargo.toml
+  ~/.local/cargo/config: share/cargo.toml
   ~/.config/.ripgreprc: share/.ripgreprc
-  ~/.config/.rgignore: share.rgignore
+  ~/.config/.rgignore: share/.rgignore
   ~/.config/ranger: share/ranger
 
   # macos
