@@ -100,7 +100,7 @@ bcc() {
 
   if [[ $uninst ]]; then
     for prog in $(echo "$uninst"); do
-      brew cask uninstall "$prog"
+      brew uninstall --cask "$prog"
     done
   fi
 }
