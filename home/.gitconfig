@@ -15,6 +15,7 @@
   # pager = less --tabs=4
   pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/ray/.gitignore
+	quotepath = false
 
 [interactive]
   difffilter = (echo && diff-so-fancy)
@@ -68,6 +69,7 @@
 
 [advice]
   addEmptyPathspec = false
+	addIgnoredFile = false
 
 [rerere]
   enabled = true
