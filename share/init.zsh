@@ -56,10 +56,12 @@ zinit light skywind3000/z.lua
 z_il wait"1"
 zinit light lukechilds/zsh-nvm
 
+z_il wait"1"
+zinit light ael-code/zsh-colored-man-pages
+
 zinit wait'1' lucid for \
   OMZP::fzf \
   OMZP::sudo \
-  OMZP::colored-man-pages \
   OMZP::vscode \
   OMZP::dash \
   OMZP::github \
