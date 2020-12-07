@@ -217,7 +217,7 @@ mkcd() { mkdir -p "$@" && cd "$_"; }
 # [B]rew [R]emove [D]ependence
 brd() {
   brew bundle dump -q -f --file="/tmp/Brewfile"
-  brew bundle --cleanup --file="/tmp/Brewfile"
+  brew bundle -f --cleanup --file="/tmp/Brewfile"
   rm /tmp/Brewfile
   # brew bundle dump -f --file=- | brew bundle --cleanup --file=-
 }
