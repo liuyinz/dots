@@ -36,7 +36,8 @@ export GIT_PAGER="diff-so-fancy | less --tabs=4 -RFX"
 # -----------------------
 # homebrew
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-
+# curl
+export PATH="/usr/local/opt/curl/bin:$PATH"
 # coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # findutils
