@@ -47,7 +47,7 @@
   newHighlight = black bold green
 
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 
 [commit]
   template = /Users/ray/.gitmessage
