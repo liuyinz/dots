@@ -48,12 +48,12 @@ ppc() {
 # [B]rew [I]nstall [P]lugin
 bip() {
   local inst
-  inst=$(brew search | eval "fzf ${FZF_DEFAULT_OPTS} \
+  inst=$(brew formulae | eval "fzf ${FZF_DEFAULT_OPTS} \
     --exact --header='[brew:install]'")
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      if brew ls --versions $prog >/dev/null; then
+      if brew ls --versions $prog &>/dev/null; then
         echo "$prog already installed."
       else
         brew install $prog
@@ -70,7 +70,7 @@ bci() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      if brew ls --cask --versions $prog >/dev/null; then
+      if brew ls --cask --versions $prog &>/dev/null; then
         echo "$prog already installed."
       else
         brew install $prog
