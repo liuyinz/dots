@@ -221,3 +221,9 @@ brd() {
   rm /tmp/Brewfile
   # brew bundle dump -f --file=- | brew bundle --cleanup --file=-
 }
+
+# Remove .DS_Store files recursively in a directory, default .
+# -------------------
+function rmdsstore() {
+  find "${@:-.}" -type f -name .DS_Store -delete
+}
