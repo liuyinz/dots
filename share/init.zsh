@@ -3,10 +3,10 @@
 # uncomment this and the last line for zprof info
 # zmodload zsh/zprof
 
-export ALL_PROXY=http://$HTTP
-
 # use emacs-style keybinds
 bindkey -e
+
+export ALL_PROXY=http://$HTTP
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -26,40 +26,24 @@ autoload -Uz _zinit
 # Functions
 # ---------------------------------
 
-z_il() {
+z_ice() {
   zinit ice lucid "$@"
 }
-
-# --------------------------------
-# Completion Colletion
-# ---------------------------------
-
-# git-extra
-z_il wait'1' as"completion" has'git-extras'
-zinit snippet https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh
-
-zinit lucid wait'1' as"completion" for \
-  OMZP::nvm/_nvm \
-  OMZP::pip/_pip
 
 # --------------------------------
 # Tool
 # ---------------------------------
 
-z_il wait atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh'
+z_ice wait atclone="dircolors -b LS_COLORS > c.zsh" \
+    atpull='%atclone' pick='c.zsh' nocompile'!'
 zinit light trapd00r/LS_COLORS
 
-z_il wait
-zinit light skywind3000/z.lua
+zinit wait lucid light-mode for \
+  skywind3000/z.lua \
+  lukechilds/zsh-nvm \
+  ael-code/zsh-colored-man-pages
 
-# install NVM
-z_il wait"1"
-zinit light lukechilds/zsh-nvm
-
-z_il wait"1"
-zinit light ael-code/zsh-colored-man-pages
-
-zinit wait'1' lucid for \
+zinit wait lucid for \
   OMZP::fzf \
   OMZP::sudo \
   OMZP::vscode \
@@ -67,26 +51,27 @@ zinit wait'1' lucid for \
   OMZP::github \
   OMZP::gitignore \
   OMZP::git-flow-avh \
-  OMZP::nvm \
+  svn OMZP::nvm \
+  svn OMZP::pip \
   OMZP::npm
 
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
+z_ice wait atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+bindkey ",," autosuggest-accept
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-z_il wait atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
-bindkey ",," autosuggest-accept
 
-# fzf-tab
-z_il wait atload"zpcompinit"
+z_ice wait
 zinit light Aloxaf/fzf-tab
 
-z_il wait"1" as"completion" blockf atpull"zinit creinstall -q ."
+z_ice wait"1a" as"completion" blockf \
+    atload"zicompinit;zicdreplay" atpull"zinit creinstall -q ."
 zinit light zsh-users/zsh-completions
 
-# SYNTAX HIGHLIGHTING
-z_il wait atinit"zpcompinit;zpcdreplay"
+# must be last loaded
+z_ice wait"1b"
 zinit light zdharma/fast-syntax-highlighting
 
 export ALL_PROXY=
@@ -180,7 +165,7 @@ source $DOT_DIR/share/func.sh
 # generate by cmd
 autoload -Uz compinit
 compinit
-command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
+# command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # uncomment the line below to profile
