@@ -43,7 +43,7 @@ zinit wait lucid light-mode for \
   lukechilds/zsh-nvm \
   ael-code/zsh-colored-man-pages
 
-zinit wait lucid for \
+zinit wait lucid light-mode for \
   OMZP::fzf \
   OMZP::sudo \
   OMZP::vscode \
@@ -66,12 +66,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 z_ice wait
 zinit light Aloxaf/fzf-tab
 
-z_ice wait"1a" as"completion" blockf \
+z_ice as"completion" blockf \
     atload"zicompinit;zicdreplay" atpull"zinit creinstall -q ."
 zinit light zsh-users/zsh-completions
 
 # must be last loaded
-z_ice wait"1b"
+z_ice wait"1"
 zinit light zdharma/fast-syntax-highlighting
 
 export ALL_PROXY=
@@ -162,10 +162,7 @@ zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
 source $DOT_DIR/share/alias.sh
 source $DOT_DIR/share/func.sh
 
-# generate by cmd
-autoload -Uz compinit
-compinit
-# command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
+command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # uncomment the line below to profile
