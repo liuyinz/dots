@@ -227,3 +227,11 @@ brd() {
 function rmdsstore() {
   find "${@:-.}" -type f -name .DS_Store -delete
 }
+
+# [B]rew [I]nstall [O]lder Version Formula
+# -------------------
+bio() {
+  cd $HOMEBREW_FORMULA
+  git checkout $2 $1.rb
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+}
