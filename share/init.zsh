@@ -141,7 +141,7 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w 
 zstyle ':completion:*:kill:*' ignored-patterns '0'
 
 # 补全第三方 Git 子命令
-zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+# zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
 
 # color
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -152,12 +152,15 @@ zstyle ':completion:*' list-dirs-first true
 # 增强版文件名补全
 # 0 - 完全匹配 ( Abc -> Abc )      1 - 大写修正 ( abc -> Abc )
 # 2 - 单词补全 ( f-b -> foo-bar )  3 - 后缀补全 ( .cxx -> foo.cxx )
-zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
-  'm:{[:lower:]-}={[:upper:]_}' \
-  'r:|[.,_-]=* r:|=*' \
-  'r:|.=* r:|=*'# # case insensetive
+# zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
+#   'm:{[:lower:]-}={[:upper:]_}' \
+#   'r:|[.,_-]=* r:|=*' \
+#   'r:|.=* r:|=*'
 
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+# smartcase completion
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
 
 source $DOT_DIR/share/alias.sh
 source $DOT_DIR/share/func.sh
