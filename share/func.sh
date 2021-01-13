@@ -216,6 +216,7 @@ mkcd() { mkdir -p "$@" && cd "$_"; }
 # -------------------
 # [B]rew [R]emove [D]ependence
 brd() {
+  export HOMEBREW_NO_AUTO_UPDATE=1
   brew bundle dump -q -f --file="/tmp/Brewfile"
   brew bundle -f --cleanup --file="/tmp/Brewfile"
   rm /tmp/Brewfile
@@ -231,7 +232,19 @@ function rmdsstore() {
 # [B]rew [I]nstall [O]lder Version Formula
 # -------------------
 bio() {
+  local pwd
+  pwd=$(pwd)
   cd $HOMEBREW_FORMULA
-  git checkout $2 $1.rb
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+  if git cat-file -e $2 2> /dev/null;then
+   if [ -e $1.rb ];then
+    echo "Installing..."
+    git checkout $2 $1.rb
+    HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+   else
+     echo "Error ! file $1.rb not exists."
+   fi
+  else
+    echo "Error ! Commit $2 not exists."
+  fi
+  cd $pwd
 }
