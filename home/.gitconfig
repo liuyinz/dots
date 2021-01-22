@@ -88,6 +88,7 @@
 
 [diff]
   tool = vscode
+	ignoreSubmodules = untracked
 [difftool]
   prompt = false
 [difftool "vscode"]
@@ -111,3 +112,5 @@
 [log]
 	abbrevCommit = true
 	decorate = no
+[submodule]
+	fetchJobs = 16

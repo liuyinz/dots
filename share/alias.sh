@@ -117,6 +117,8 @@ alias gplr='git pull --rebase --autostash -v'
 # submodule
 alias gsm='git submodule'
 alias gsma='git submodule add'
+alias gsmaf='git submodule add --force'
+alias gsman='git submodule add --name'
 alias gsms='git submodule status'
 alias gsmi='git submodule init'
 alias gsmd='git submodule deinit'
