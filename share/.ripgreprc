@@ -8,14 +8,14 @@
 --ignore-file=/Users/ray/.gitignore
 
 # ui
---colors=path:fg:yellow
+--colors=path:fg:blue
 --colors=path:style:underline
 
 --colors=match:fg:green
 --colors=match:style:bold
 
---colors=line:fg:blue
+--colors=line:fg:yellow
 --colors=line:style:bold
 
---colors=column:fg:blue
+--colors=column:fg:yellow
 --colors=line:style:bold
