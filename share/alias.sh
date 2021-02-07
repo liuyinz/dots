@@ -32,6 +32,9 @@ alias bb='bonclay backup'
 alias bs='bonclay sync'
 alias br='bonclay restore'
 
+#pfs
+alias gsmj='pfs -c "git pull origin" -j 16'
+
 # Scripts
 # -----------------------
 # alias wt='when-changed -v -r -1 -s ./ pytest -s '
@@ -124,7 +127,7 @@ alias gsmi='git submodule init'
 alias gsmd='git submodule deinit'
 alias gsmu='git submodule update'
 alias gsmf='git submodule foreach'
-alias gsmp='git submodule foreach "git pull origin master"'
+alias gsmp='git submodule foreach "git pull origin"'
 
 alias gs='git status -sb'
 alias gbl='git blame -w --abbrev=6'
