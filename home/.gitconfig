@@ -114,3 +114,5 @@
 	decorate = no
 [submodule]
 	fetchJobs = 16
+[status]
+	submoduleSummary = true
