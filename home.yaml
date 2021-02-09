@@ -24,6 +24,7 @@ spec:
   ~/.config/gh/config.yml: share/gh.yml
   ~/Library/Application Support/jesseduffield/lazygit/config.yml: share/lazygit.yml
   # ~/.config/config.yml: git/lazygit.yml
+  ~/.editorconfig: share/.editorconfig
 
   # JS
   ~/.prettierrc.json: share/.prettierrc.json
