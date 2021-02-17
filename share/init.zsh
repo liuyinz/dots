@@ -43,6 +43,8 @@ zinit wait lucid light-mode for \
   lukechilds/zsh-nvm \
   ael-code/zsh-colored-man-pages
 
+zinit snippet OMZ::lib/git.zsh
+
 zinit wait lucid light-mode for \
   OMZP::fzf \
   OMZP::sudo \
