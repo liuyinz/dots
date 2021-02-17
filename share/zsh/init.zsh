@@ -164,8 +164,8 @@ zstyle ':completion:*' list-dirs-first true
 # smartcase completion
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
 
-source $DOT_DIR/share/alias.sh
-source $DOT_DIR/share/func.sh
+source $DOT_DIR/share/zsh/alias.sh
+source $DOT_DIR/share/zsh/func.sh
 
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"

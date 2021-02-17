@@ -16,8 +16,8 @@ spec:
   # theme
   ~/.config/starship.toml: share/starship.toml
   # zsh
-  ~/.zshenv: share/.zshenv
-  ~/.zprofile: share/.zprofile
+  ~/.zshenv: share/zsh/.zshenv
+  ~/.zprofile: share/zsh/.zprofile
   # git
   ~/.gitignore: share/.gitignore
   ~/.gitmessage: share/.gitmessage
