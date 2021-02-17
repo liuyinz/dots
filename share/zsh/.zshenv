@@ -11,10 +11,6 @@ export DATA_HOME=$HOME/.local
 export ZCACHE=$CACHE_HOME/zcache
 export DOT_DIR=$DATA_HOME/dotfile
 
-# oh-my-zsh
-# -----------------------
-export ZSH_CUSTOM=$DOT_DIR/zsh/omz
-
 # misc
 # -----------------------
 export LANG=en_US.UTF-8
