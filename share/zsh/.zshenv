@@ -79,10 +79,10 @@ export FZF_DEFAULT_OPTS=" \
     --inline-info \
     --height '60%' \
     --color=dark \
-    --color=bg:#242730,fg:#bbc2cf,hl:#7bc275 \
-    --color=fg+:#d8dde6,bg+:#3d4451,hl+:#7bc275,pointer:#f76582 \
-    --color=gutter:#242730,marker:#f76582,header:#51afef \
-    --color=prompt:#51afef,query:#7bc275,spinner:#fcce7b,info:#c57bdb"
+    --color=bg:#242730,fg:#bbc2cf:dim,hl:#7bc275:bold \
+    --color=fg+:#d8dde6,bg+:#3d4451,hl+:#7bc275:bold,pointer:#f76582:bold \
+    --color=gutter:#242730,marker:#f76582:bold,header:#51afef:dim \
+    --color=prompt:#51afef:dim,query:#7bc275:bold,spinner:#fcce7b:dim,info:#c57bdb:bold"
 
 # Lang
 # -----------------------
