@@ -5,6 +5,7 @@
 
 # use emacs-style keybinds
 bindkey -e
+bindkey "^V" clear-screen
 
 export ALL_PROXY=http://$HTTP
 

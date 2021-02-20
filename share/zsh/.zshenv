@@ -75,14 +75,18 @@ export FZF_DEFAULT_OPTS=" \
     --cycle \
     --multi \
     --sort \
-    --marker '*' \
-    --inline-info \
-    --height '60%' \
-    --color=dark \
-    --color=bg:#242730,fg:#bbc2cf:dim,hl:#7bc275:bold \
+    --history=$ZCACHE/.fzf_history \
+    --marker='*' \
+    --info=inline\
+    --margin=0,0,0,1 \
+    --height='60%' \
+    --color=dark,bg:#242730,fg:#bbc2cf:dim,hl:#7bc275:bold \
     --color=fg+:#d8dde6,bg+:#3d4451,hl+:#7bc275:bold,pointer:#f76582:bold \
     --color=gutter:#242730,marker:#f76582:bold,header:#51afef:dim \
-    --color=prompt:#51afef:dim,query:#7bc275:bold,spinner:#fcce7b:dim,info:#c57bdb:bold"
+    --color=prompt:#51afef:dim,query:#7bc275:bold,spinner:#fcce7b:dim,info:#c57bdb:bold \
+    --bind=change:first,btab:up+toggle \
+    --bind=ctrl-n:down,ctrl-p:up,alt-n:next-history,alt-p:previous-history \
+    --bind=ctrl-u:cancel,ctrl-l:jump,ctrl-t:toggle-all,ctrl-v:clear-selection"
 
 # Lang
 # -----------------------
