@@ -101,7 +101,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 # Node
 export NVM_DIR=$DATA_HOME/nvm
-export PATH="$NVM_DIR/versions/node/v15.5.1/bin:$PATH"
+export PATH="$NVM_DIR/versions/node/v15.10.0/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
