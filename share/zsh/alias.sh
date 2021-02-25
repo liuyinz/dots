@@ -46,6 +46,9 @@ alias vi='nvim'
 alias lg='lazygit'
 alias pc="proxychains4"
 
+#  TODO @https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/emacs/emacsclient.sh
+alias ec="emacsclient -q -n -a ''"
+
 # bonclay
 alias bb='bonclay backup'
 alias bs='bonclay sync'
