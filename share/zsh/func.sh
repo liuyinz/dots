@@ -210,7 +210,7 @@ zr() {
 
 # Create a folder and move into it in one command
 # -------------------
-mkcd() { mkdir -p "$@" && cd "$_"; }
+mkcd() { mkdir -p "$@" && cd "$_" || return; }
 
 # brew clean useless dependence
 # -------------------
@@ -234,17 +234,17 @@ function rmdsstore() {
 bio() {
   local pwd
   pwd=$(pwd)
-  cd $HOMEBREW_FORMULA
-  if git cat-file -e $2 2> /dev/null;then
-   if [ -e $1.rb ];then
-    echo "Installing..."
-    git checkout $2 $1.rb
-    HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
-   else
-     echo "Error ! file $1.rb not exists."
-   fi
+  cd $HOMEBREW_FORMULA || return
+  if git cat-file -e $2 2>/dev/null; then
+    if [ -e $1.rb ]; then
+      echo "Installing..."
+      git checkout $2 $1.rb
+      HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+    else
+      echo "Error ! file $1.rb not exists."
+    fi
   else
     echo "Error ! Commit $2 not exists."
   fi
-  cd $pwd
+  cd $pwd || exit
 }

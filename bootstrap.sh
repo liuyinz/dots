@@ -4,7 +4,7 @@ read -r -p "Sync which config ? [h(ome)|w(ork)] " use_config
 read -r -p "Sync nvim setting ? [y|n] " use_nvim
 
 # git clone respository
-cd ~/.local/
+cd ~/.local/ || exit
 echo "ensure $DOT_DIR are available..."
 [[ ! -d dotfile ]] && git clone https://github.com/liuyinz/dotfile.git
 
