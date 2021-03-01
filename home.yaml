@@ -28,7 +28,7 @@ spec:
 
   # JS
   ~/.prettierrc.json: share/.prettierrc.json
-  ~/.eslintrc: share/.eslintrc
+  ~/.eslintrc.json: share/.eslintrc.json
   ~/.npmrcs: share/npmrcs
   ~/.local/nvm/default-packages: share/default-packages
   # PY
