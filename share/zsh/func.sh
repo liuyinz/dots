@@ -248,3 +248,16 @@ bio() {
   fi
   cd $pwd || exit
 }
+
+ec() {
+  # get list of emacs frames.
+  frameslist=$(emacsclient --alternate-editor '' --eval '(frame-list)' 2>/dev/null | egrep -o '(frame)+')
+
+  if [ "$(echo "$frameslist" | sed -n '$=')" -ge 2 ]; then
+    # prevent creating another X frame if there is at least one present.
+    emacsclient --quiet --no-wait --alternate-editor "" "$@"
+  else
+    # Create one if there is no X window yet.
+    emacsclient --quiet --no-wait --alternate-editor "" --create-frame "$@"
+  fi
+}
