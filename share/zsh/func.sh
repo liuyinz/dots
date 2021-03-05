@@ -11,7 +11,7 @@ ppi() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      pip3 install --upgrade "$prog"
+      pip3 install --user "$prog"
     done
   fi
 }
@@ -24,7 +24,7 @@ ppu() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      pip3 install --upgrade "$prog"
+      pip3 install --user --upgrade "$prog"
     done
   fi
 }
@@ -37,7 +37,7 @@ ppc() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      pip3 uninstall --yes "$prog"
+      pip3 uninstall --user --yes "$prog"
     done
   fi
 }

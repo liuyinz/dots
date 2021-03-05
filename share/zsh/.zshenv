@@ -91,8 +91,8 @@ export FZF_DEFAULT_OPTS=" \
 # Lang
 # -----------------------
 # pip
-export PYTHONPATH=$DATA_HOME/python
-export PATH=$PYTHONPATH/bin:$PATH
+export PYTHONUSERBASE=$DATA_HOME/python/3.8
+export PATH=$PYTHONUSERBASE/bin:$PATH
 
 # rust
 export CARGO_HOME=$DATA_HOME/cargo
@@ -104,10 +104,6 @@ export NVM_DIR=$DATA_HOME/nvm
 export PATH="$NVM_DIR/versions/node/v15.10.0/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
-
-# Ruby
-export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
 
 # Golang
 export GOPATH=$HOME/Code/go

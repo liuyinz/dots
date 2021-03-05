@@ -55,7 +55,6 @@ zinit wait lucid light-mode for \
   OMZP::gitignore \
   OMZP::git-flow-avh \
   svn OMZP::nvm \
-  svn OMZP::pip \
   OMZP::npm
 
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
@@ -170,6 +169,7 @@ source $DOT_DIR/share/zsh/func.sh
 
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
 
 # uncomment the line below to profile
 # zprof | less
