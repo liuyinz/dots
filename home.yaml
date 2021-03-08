@@ -26,6 +26,9 @@ spec:
   # ~/.config/config.yml: git/lazygit.yml
   ~/.editorconfig: share/.editorconfig
 
+  # self-defined commad
+  ~/.local/bin: share/bin
+
   # JS
   ~/.prettierrc.json: share/.prettierrc.json
   ~/.eslintrc.json: share/.eslintrc.json

@@ -29,7 +29,8 @@ export PATH=$DATA_HOME/bin:$PATH
 export SOCKS=127.0.0.1:4781
 export HTTP=127.0.0.1:4780
 
-export EDITOR="nvim"
+# export EDITOR="nvim"
+export EDITOR="ecc"
 export GIT_PAGER="diff-so-fancy | less --tabs=4 -RFX"
 
 # Tool
