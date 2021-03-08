@@ -10,9 +10,9 @@
 
 [core]
   # editor = code --wait
-  editor = nvim
+  # editor = nvim
+  editor = ecc
   autocrlf = input
-  # pager = less --tabs=4
   pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/ray/.gitignore
 	quotepath = false
@@ -87,20 +87,32 @@
   proxy = http://127.0.0.1:4780
 
 [diff]
-  tool = vscode
+  # tool = vscode
+  tool = ediff
 	ignoreSubmodules = untracked
 [difftool]
   prompt = false
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
 
-[merge]
-  tool = vscode
+# [difftool "vscode"]
+#   cmd = code --wait --diff $LOCAL $REMOTE
+#
+ [difftool "ediff"]
+  cmd = edf "$LOCAL" "$REMOTE"
+
 [mergetool]
   keepBackup = false
   prompt = false
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
+
+# [merge]
+#   tool = vscode
+# [mergetool "vscode"]
+#   cmd = code --wait $MERGED
+
+[merge]
+  tool = ediff
+  conflictStyle = diff3
+[mergetool "ediff"]
+  cmd = edf "$LOCAL" "$REMOTE" "$MERGED" "$BASE"
 
 [filter "lfs"]
   process = git-lfs filter-process

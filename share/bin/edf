@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+daemon_running_p() {
+	# return 1 if succeed,otherwise 0
+	ps aux | grep -v grep | grep -c "Emacs.app/Contents/MacOS/Emacs --bg-daemon="
+	# same as: pgrep -f ".."
+}
+
+[[ $(daemon_running_p) -eq 0 ]] && emacs --daemon
+
+LOCAL=${1}
+REMOTE=${2}
+MERGED=${3}
+BASE=${4}
+
+# case "${#}" in
+# 2)
+#   EVAL="ediff-files \"${LOCAL}\" \"${REMOTE}\""
+#   ;;
+# 3)
+#   EVAL="ediff-merge-files \"${LOCAL}\" \"${REMOTE}\" nil \"${MERGED}\""
+#   ;;
+# 4)
+#   EVAL="ediff-merge-files-with-ancestor \"${LOCAL}\" \"${REMOTE}\" \"${BASE}\" nil \"${MERGED}\""
+#   ;;
+# esac
+
+# emacsclient -q -c -e "(${EVAL})" 2>&1
+
+emacsclient -q -c "${MERGED}"
+
+exit $?
