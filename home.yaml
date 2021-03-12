@@ -33,7 +33,6 @@ spec:
   ~/.prettierrc.json: share/.prettierrc.json
   ~/.eslintrc.json: share/.eslintrc.json
   ~/.npmrcs: share/npmrcs
-  ~/.local/nvm/default-packages: share/default-packages
   # PY
   ~/.pylintrc: share/.pylintrc
   ~/.config/pip/pip.conf: share/pip.conf

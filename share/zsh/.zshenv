@@ -106,6 +106,9 @@ export PATH="$NVM_DIR/versions/node/v15.10.0/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
+# ccls
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # Golang
 export GOPATH=$HOME/Code/go
 export PATH=$GOPATH/bin:$PATH
