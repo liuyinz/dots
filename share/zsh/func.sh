@@ -37,7 +37,7 @@ ppc() {
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
-      pip3 uninstall --user --yes "$prog"
+      pip3 uninstall --yes "$prog"
     done
   fi
 }

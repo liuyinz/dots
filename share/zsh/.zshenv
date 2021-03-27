@@ -92,7 +92,7 @@ export FZF_DEFAULT_OPTS=" \
 # Lang
 # -----------------------
 # pip
-export PYTHONUSERBASE=$DATA_HOME/python/3.8
+export PYTHONUSERBASE=$DATA_HOME/python/3.9
 export PATH=$PYTHONUSERBASE/bin:$PATH
 
 # rust
@@ -102,7 +102,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 # Node
 export NVM_DIR=$DATA_HOME/nvm
-export PATH="$NVM_DIR/versions/node/v15.10.0/bin:$PATH"
+export PATH="$NVM_DIR/versions/node/v15.12.0/bin:$PATH"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
