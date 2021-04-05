@@ -54,7 +54,7 @@ zinit wait lucid light-mode for \
   OMZP::github \
   OMZP::gitignore \
   OMZP::git-flow-avh \
-  svn OMZP::nvm \
+  OMZP::nvm \
   OMZP::npm
 
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
@@ -103,12 +103,6 @@ setopt AUTO_PUSHD
 # match hidden file
 setopt GLOB_DOTS
 
-# setopt autolist
-# setopt automenu
-# setopt auto
-# setopt LIST_PACKED
-# setopt AUTO_PARAM_SLASH
-
 # hist
 export HISTFILE=$ZCACHE/.zsh_history
 export HISTSIZE=1000000000
@@ -117,10 +111,7 @@ export HISTTIMEFORMAT="[%F %T] "
 
 # cache
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $ZCACHE/.zcompcache
-
-# 不展开普通别名
-# zstyle ':completion:*' regular false
+zstyle ':completion:*' cache-path $ZCACHE
 
 # Automatically update PATH entries
 zstyle ':completion:*' rehash true
@@ -137,29 +128,11 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*:descriptions' format '[%d]'
 
-# 补全当前用户所有进程列表
-# 不要用 pid,user,comm,cmd，zsh 会一直读到
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-zstyle ':completion:*:kill:*' ignored-patterns '0'
-
-# 补全第三方 Git 子命令
-# zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
-
 # color
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Keep directories and files separated
 zstyle ':completion:*' list-dirs-first true
-
-# 增强版文件名补全
-# 0 - 完全匹配 ( Abc -> Abc )      1 - 大写修正 ( abc -> Abc )
-# 2 - 单词补全 ( f-b -> foo-bar )  3 - 后缀补全 ( .cxx -> foo.cxx )
-# zstyle ':completion:*:(argument-rest|files):*' matcher-list '' \
-#   'm:{[:lower:]-}={[:upper:]_}' \
-#   'r:|[.,_-]=* r:|=*' \
-#   'r:|.=* r:|=*'
-
-# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # smartcase completion
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
