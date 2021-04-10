@@ -115,3 +115,8 @@ export PATH=$GOPATH/bin:$PATH
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 export GOSUMDB=sum.golang.google.cn
+
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export GEM_HOME=$DATA_HOME/gem
+export PATH="$GEM_HOME/bin:$PATH"

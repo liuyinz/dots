@@ -248,3 +248,42 @@ bio() {
   fi
   cd $pwd || exit
 }
+
+# h - browse chrome history
+h() {
+  local cols sep
+  cols=$((COLUMNS / 3))
+  sep='{::}'
+
+  cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
+
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+    awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+    fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' |
+    xargs open &>/dev/null
+}
+
+# b  - browse chrome Bookmarks
+# b() {
+#
+#   /usr/bin/ruby -x ~/.local/bin/b.rb ~/Library/Application\ Support/Google/Chrome/Default/Bookmarks |
+#     fzf --ansi --multi --no-hscroll --tiebreak=begin |
+#     awk 'BEGIN { FS = "\t" } { print $2 }' |
+#     xargs open &>/dev/null
+# }
+
+# b  - browse chrome Bookmarks
+b() {
+
+  which jq > /dev/null 2>&1 || echo "jq is not installed !!!"
+
+  local bookmarks_path=~/Library/Application\ Support/Google/Chrome/Default/Bookmarks
+  local jq_script='def ancestors: while(. | length >= 2; del(.[-1,-2])); . as $in | paths(.url?) as $key | $in | getpath($key) | {name,url, path: [$key[0:-2] | ancestors as $a | $in | getpath($a) | .name?] | reverse | join("/") } | .path + "/" + .name + "\t" + .url'
+  jq -r $jq_script < "$bookmarks_path" |
+  sed -E $'s/(.*)\t(.*)/\\1\t\x1b[36m\\2\x1b[m/g' |
+  fzf --ansi --multi --no-hscroll --tiebreak=begin |
+  awk 'BEGIN { FS = "\t" } { print $2 }' |
+  xargs open &>/dev/null
+}
