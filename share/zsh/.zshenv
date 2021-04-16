@@ -36,7 +36,6 @@ export GIT_PAGER="diff-so-fancy | less --tabs=4 -RFX"
 # Tool
 # -----------------------
 # homebrew
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 export HOMEBREW_FORMULA=/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
 
 # curl
