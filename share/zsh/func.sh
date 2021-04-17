@@ -97,7 +97,7 @@ bip() {
 # [B]rew [C]ask [I]nstall [P]lugin
 bci() {
   local inst
-  inst=$(brew search --casks | eval "fzf ${FZF_DEFAULT_OPTS} \
+  inst=$(brew casks | eval "fzf ${FZF_DEFAULT_OPTS} \
     --exact --header='[brew cask:install]'")
 
   if [[ $inst ]]; then
