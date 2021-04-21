@@ -1,6 +1,8 @@
 gui:
   # stuff relating to the UI
   showFileTree: true
+  showRandomTip: false
+  showCommandLog: false
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   sidePanelWidth: 0.3333 # number from 0 to 1
