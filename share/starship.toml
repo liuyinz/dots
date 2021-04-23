@@ -28,9 +28,6 @@ disabled = false
 commit_hash_length = 7
 format = "[\\($hash\\)]($style) "
 
-[git_state]
-progress_divider = "/"
-
 [git_status]
 disabled = true
 
