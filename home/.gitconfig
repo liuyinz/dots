@@ -1,6 +1,9 @@
 # git config --global --unset http.proxy
 # git config --global http.proxy "http://$HTTP"
 
+# [url "https://github.com.cnpmjs.org/"]
+#   insteadOf = https://github.com/
+
 [apply]
   whitespace = nowarn
 
