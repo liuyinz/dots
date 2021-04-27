@@ -9,92 +9,158 @@ bindkey "^V" clear-screen
 
 export ALL_PROXY=http://$HTTP
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-  print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-  command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-  command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+### Oh-My-Zsh installtion
+export ZSH=$HOME/.oh-my-zsh
+
+if [[ ! -f $ZSH/oh-my-zsh.sh ]]; then
+  echo "Installing ohmyzsh/ohmyzsh..."
+  command mkdir -p $ZSH
+  command git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH &&
+    echo "Installation successful." || echo "The clone has failed."
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
+### Oh-My-Zsh Setting
 
-# --------------------------------
-# Functions
-# ---------------------------------
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=""
 
-z_ice() {
-  zinit ice lucid "$@"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=3
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="yyyy-mm-dd"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM="$ZSH/custom"
+
+# function
+plugin_ensure() {
+  local repo=https://github.com/$1.git
+  local dir=$ZSH_CUSTOM/plugins/${2:-$(echo "$repo" | sed -e 's|/$||' -e 's|:*/*\.git$||' -e 's|.*[/:]||g')}
+  if [ ! -d $dir/.git ]; then
+    echo "Installing $repo ..."
+    command git clone $repo $dir &&
+      echo "Installation successful." ||
+      echo "The clone has failed."
+  fi
 }
 
+plugin_ensure trapd00r/LS_COLORS
+plugin_ensure skywind3000/z.lua
+plugin_ensure lukechilds/zsh-nvm
+plugin_ensure Aloxaf/fzf-tab
+plugin_ensure zsh-users/zsh-autosuggestions
+plugin_ensure zsh-users/zsh-completions
+plugin_ensure zdharma/fast-syntax-highlighting
+plugin_ensure TamCore/autoupdate-oh-my-zsh-plugins autoupdate
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  github
+  gitignore
+  git-flow-avh
+  colored-man-pages
+  fzf
+  sudo
+  vscode
+  dash
+  nvm
+  npm
+  # custom plugins
+  # zsh-nvm
+  z.lua
+  autoupdate
+  zsh-completions
+  fzf-tab
+  zsh-autosuggestions
+  fast-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+export ALL_PROXY=
+
 # --------------------------------
-# Tool
+# custom setting
 # ---------------------------------
 
-z_ice wait atclone="dircolors -b LS_COLORS > c.zsh" \
-    atpull='%atclone' pick='c.zsh' nocompile'!'
-zinit light trapd00r/LS_COLORS
+# completions
+autoload -U compinit && compinit
 
-zinit wait lucid light-mode for \
-  skywind3000/z.lua \
-  lukechilds/zsh-nvm \
-  ael-code/zsh-colored-man-pages
-
-zinit snippet OMZ::lib/git.zsh
-
-zinit wait lucid light-mode for \
-  OMZP::fzf \
-  OMZP::sudo \
-  OMZP::vscode \
-  OMZP::dash \
-  OMZP::github \
-  OMZP::gitignore \
-  OMZP::git-flow-avh \
-  OMZP::npm
-
-# AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
-z_ice wait atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
+# autosuggestions
 bindkey ",," autosuggest-accept
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-z_ice wait
-zinit light Aloxaf/fzf-tab
-
-z_ice as"completion" blockf \
-    atload"zicompinit;zicdreplay" atpull"zinit creinstall -q ."
-zinit light zsh-users/zsh-completions
-
-# must be last loaded
-z_ice wait"1"
-zinit light zdharma/fast-syntax-highlighting
-
-export ALL_PROXY=
+# autoupdate
+ZSH_CUSTOM_AUTOUPDATE_QUIET=true
 
 # --------------------------------
 # options
 # ---------------------------------
 
 setopt INC_APPEND_HISTORY
-setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
-# setopt HIST_IGNORE_ALL_DUPS
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt bang_hist
 setopt print_exit_value
-setopt hist_verify
 setopt PROMPT_SUBST
-# setopt   no_hist_save_by_copy
 setopt inc_append_history_time
 setopt no_inc_append_history
 setopt no_share_history
@@ -108,39 +174,16 @@ export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 export HISTTIMEFORMAT="[%F %T] "
 
-# cache
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $ZCACHE
-
 # Automatically update PATH entries
 zstyle ':completion:*' rehash true
 
-# 结果样式
-zstyle ':completion:*' menu yes select # search
-zstyle ':completion:*' list-grouped false
-zstyle ':completion:*' list-separator ''
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:warnings' format '%F{red}%B-- No match for: %d --%b%f'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
-zstyle ':completion:*:descriptions' format '[%d]'
-
-# color
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
 # Keep directories and files separated
 zstyle ':completion:*' list-dirs-first true
-
-# smartcase completion
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
 
 source $DOT_DIR/share/zsh/alias.sh
 source $DOT_DIR/share/zsh/func.sh
 
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
-command -v npm >/dev/null && . <(npm completion 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
 command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
 
