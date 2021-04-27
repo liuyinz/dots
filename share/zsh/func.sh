@@ -77,11 +77,11 @@ ppc() {
 # BREW
 # ------------------
 
-# [B]rew [I]nstall [P]lugin
-bip() {
+# [B]rew [I]nstall [F]ormulae
+bif() {
   local inst
   inst=$(brew formulae | eval "fzf ${FZF_DEFAULT_OPTS} \
-    --exact --header='[brew:install]'")
+    --exact --header='[brew install: formulae]'")
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
@@ -94,11 +94,11 @@ bip() {
   fi
 }
 
-# [B]rew [C]ask [I]nstall [P]lugin
-bci() {
+# [B]rew [I]nstall [C]ask
+bic() {
   local inst
   inst=$(brew casks | eval "fzf ${FZF_DEFAULT_OPTS} \
-    --exact --header='[brew cask:install]'")
+    --exact --header='[brew install: cask]'")
 
   if [[ $inst ]]; then
     for prog in $(echo "$inst"); do
@@ -111,11 +111,11 @@ bci() {
   fi
 }
 
-# [B]rew [C]lean [P]lugin
-bcp() {
+# [B]rew [C]lean [F]ormulae
+bcf() {
   local uninst
   uninst=$(brew leaves | eval "fzf ${FZF_DEFAULT_OPTS} \
-    --header='[brew formulae:uninstall]'")
+    --header='[brew uninstall: formulae]'")
 
   if [[ $uninst ]]; then
     for prog in $(echo "$uninst"); do
@@ -124,11 +124,11 @@ bcp() {
   fi
 }
 
-# [B]rew [C]ask [C]lean [P]lugin
+# [B]rew [C]lean [C]ask
 bcc() {
   local uninst
   uninst=$(brew list --cask | eval "fzf ${FZF_DEFAULT_OPTS} \
-    --header='[brew cask:uninstall]'")
+    --header='[brew uninstall: cask]'")
 
   if [[ $uninst ]]; then
     for prog in $(echo "$uninst"); do
@@ -142,7 +142,7 @@ bup() {
   brew update
   local upd
   upd=$(brew outdated --greedy | eval "fzf ${FZF_DEFAULT_OPTS} \
-    --header='[brew:update]'")
+    --header='[brew update: both]'")
 
   if [[ $upd ]]; then
     for prog in $(echo "$upd"); do
@@ -162,6 +162,36 @@ but() {
       brew untap "$prog"
     done
   fi
+}
+
+# brew remove useless dependence
+# -------------------
+# [B]rew [R]emove [D]ependence
+brd() {
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  brew bundle dump -q -f --file="/tmp/Brewfile"
+  brew bundle -f --cleanup --file="/tmp/Brewfile"
+  rm /tmp/Brewfile
+}
+
+# [B]rew [I]nstall [O]lder Version Formula
+# -------------------
+bio() {
+  local pwd
+  pwd=$(pwd)
+  cd $HOMEBREW_FORMULA || return
+  if git cat-file -e $2 2>/dev/null; then
+    if [ -e $1.rb ]; then
+      echo "Installing..."
+      git checkout $2 $1.rb
+      HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
+    else
+      echo "Error ! file $1.rb not exists."
+    fi
+  else
+    echo "Error ! Commit $2 not exists."
+  fi
+  cd $pwd || exit
 }
 
 # PATH
@@ -235,40 +265,3 @@ grebuild() {
 # Create a folder and move into it in one command
 # -------------------
 mcd() { mkdir -p "$@" && cd "$_" || return; }
-
-# brew clean useless dependence
-# -------------------
-# [B]rew [R]emove [D]ependence
-brd() {
-  export HOMEBREW_NO_AUTO_UPDATE=1
-  brew bundle dump -q -f --file="/tmp/Brewfile"
-  brew bundle -f --cleanup --file="/tmp/Brewfile"
-  rm /tmp/Brewfile
-  # brew bundle dump -f --file=- | brew bundle --cleanup --file=-
-}
-
-# Remove .DS_Store files recursively in a directory, default .
-# -------------------
-function rmdsstore() {
-  find "${@:-.}" -type f -name .DS_Store -delete
-}
-
-# [B]rew [I]nstall [O]lder Version Formula
-# -------------------
-bio() {
-  local pwd
-  pwd=$(pwd)
-  cd $HOMEBREW_FORMULA || return
-  if git cat-file -e $2 2>/dev/null; then
-    if [ -e $1.rb ]; then
-      echo "Installing..."
-      git checkout $2 $1.rb
-      HOMEBREW_NO_AUTO_UPDATE=1 brew install $1
-    else
-      echo "Error ! file $1.rb not exists."
-    fi
-  else
-    echo "Error ! Commit $2 not exists."
-  fi
-  cd $pwd || exit
-}
