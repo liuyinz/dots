@@ -11,7 +11,6 @@ export ALL_PROXY=http://$HTTP
 
 ### Oh-My-Zsh installtion
 export ZSH=$CACHE_HOME/oh-my-zsh
-export ZSH_COMPDUMP=${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}
 
 if [[ ! -f $ZSH/oh-my-zsh.sh ]]; then
   echo "Installing OhMyZsh/ohmyzsh..."
