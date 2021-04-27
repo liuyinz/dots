@@ -10,10 +10,11 @@ bindkey "^V" clear-screen
 export ALL_PROXY=http://$HTTP
 
 ### Oh-My-Zsh installtion
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$CACHE_HOME/oh-my-zsh
+export ZSH_COMPDUMP=${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}
 
 if [[ ! -f $ZSH/oh-my-zsh.sh ]]; then
-  echo "Installing ohmyzsh/ohmyzsh..."
+  echo "Installing OhMyZsh/ohmyzsh..."
   command mkdir -p $ZSH
   command git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH &&
     echo "Installation successful." || echo "The clone has failed."
@@ -117,7 +118,7 @@ plugins=(
   sudo
   vscode
   dash
-  npm
+  # npm
   # custom plugins
   z.lua
   autoupdate
@@ -169,7 +170,7 @@ setopt AUTO_PUSHD
 setopt GLOB_DOTS
 
 # hist
-export HISTFILE=$ZCACHE/.zsh_history
+export HISTFILE=$CACHE_HOME/.zsh_history
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 export HISTTIMEFORMAT="[%F %T] "

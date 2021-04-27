@@ -8,7 +8,6 @@
 export CONFIG_HOME=$HOME/.config
 export CACHE_HOME=$HOME/.cache
 export DATA_HOME=$HOME/.local
-export ZCACHE=$CACHE_HOME/zcache
 export DOT_DIR=$DATA_HOME/dotfile
 
 # misc
@@ -58,7 +57,7 @@ export PROXYCHAINS_CONF_FILE=$CONFIG_HOME/proxychains.conf
 # bat
 export BAT_CONFIG_PATH=$CONFIG_HOME/bat.conf
 # z.lua
-export _ZL_DATA=$ZCACHE/.zlua
+export _ZL_DATA=$CACHE_HOME/.zlua
 export _ZL_ECHO=1
 export _ZL_ADD_ONCE=0
 export _ZL_MATCH_MODE=0
@@ -75,7 +74,7 @@ export FZF_DEFAULT_OPTS=" \
     --cycle \
     --multi \
     --sort \
-    --history=$ZCACHE/.fzf_history \
+    --history=$CACHE_HOME/.fzf_history \
     --marker='*' \
     --info=inline\
     --margin=0,0,0,1 \
@@ -91,6 +90,7 @@ export FZF_DEFAULT_OPTS=" \
 # Lang
 # -----------------------
 # pip
+export PYTHONSTARTUP=$HOME/.pythonrc
 export PYTHONUSERBASE=$DATA_HOME/python/3.9
 export PATH=$PYTHONUSERBASE/bin:$PATH
 
@@ -99,6 +99,8 @@ export CARGO_HOME=$DATA_HOME/cargo
 export PATH=$CARGO_HOME/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
+#node
+export NODE_REPL_HISTORY=$CACHE_HOME/.node_repl_history
 # fnm
 export FNM_DIR=$DATA_HOME/fnm
 export FNM_NODE_DIST_MIRROR="https://npm.taobao.org/dist"
