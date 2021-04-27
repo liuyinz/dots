@@ -99,12 +99,9 @@ export CARGO_HOME=$DATA_HOME/cargo
 export PATH=$CARGO_HOME/bin:$PATH
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
-# Node
-export NVM_DIR=$DATA_HOME/nvm
-export PATH="$NVM_DIR/versions/node/v16.0.0/bin:$PATH"
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
-export NVM_COMPLETION=true
+# fnm
+export FNM_DIR=$DATA_HOME/fnm
+export FNM_NODE_DIST_MIRROR="https://npm.taobao.org/dist"
 
 # ccls
 export PATH="/usr/local/opt/llvm/bin:$PATH"

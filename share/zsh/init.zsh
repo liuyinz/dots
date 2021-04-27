@@ -96,7 +96,6 @@ plugin_ensure() {
 
 plugin_ensure trapd00r/LS_COLORS
 plugin_ensure skywind3000/z.lua
-plugin_ensure lukechilds/zsh-nvm
 plugin_ensure Aloxaf/fzf-tab
 plugin_ensure zsh-users/zsh-autosuggestions
 plugin_ensure zsh-users/zsh-completions
@@ -118,10 +117,8 @@ plugins=(
   sudo
   vscode
   dash
-  nvm
   npm
   # custom plugins
-  # zsh-nvm
   z.lua
   autoupdate
   zsh-completions
@@ -140,6 +137,9 @@ export ALL_PROXY=
 
 # completions
 autoload -U compinit && compinit
+
+# LS_COLORS
+command -v dircolors >/dev/null && . <(dircolors -b $ZSH_CUSTOM/plugins/LS_COLORS/LS_COLORS 2>/dev/null)
 
 # autosuggestions
 bindkey ",," autosuggest-accept
@@ -186,6 +186,8 @@ source $DOT_DIR/share/zsh/func.sh
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
 command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
+
+command -v fnm >/dev/null && eval "$(fnm env)"
 
 # uncomment the line below to profile
 # zprof | less
