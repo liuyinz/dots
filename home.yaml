@@ -34,6 +34,7 @@ spec:
   ~/.eslintrc.json: share/.eslintrc.json
   ~/.npmrcs: share/npmrcs
   # PY
+  ~/.pythonrc: share/.pythonrc
   ~/.pylintrc: share/.pylintrc
   ~/.config/pip/pip.conf: share/pip.conf
   # other
