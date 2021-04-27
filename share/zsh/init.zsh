@@ -109,6 +109,7 @@ plugin_ensure TamCore/autoupdate-oh-my-zsh-plugins autoupdate
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  osx
   github
   gitignore
   git-flow-avh
