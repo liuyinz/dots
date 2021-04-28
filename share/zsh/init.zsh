@@ -10,7 +10,7 @@ bindkey "^V" clear-screen
 export ALL_PROXY=http://$HTTP
 
 ### Oh-My-Zsh installtion
-export ZSH=$CACHE_HOME/oh-my-zsh
+export ZSH=$DATA_HOME/oh-my-zsh
 
 if [[ ! -f $ZSH/oh-my-zsh.sh ]]; then
   echo "Installing OhMyZsh/ohmyzsh..."
@@ -82,9 +82,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$ZSH/custom"
 
-# If $ZSH_CACHE_DIR is already defined
-# ZSH_COMPDUMP="$CACHE_HOME/.zcompdump"
-
 # function
 plugin_ensure() {
   local repo=https://github.com/$1.git
@@ -97,6 +94,7 @@ plugin_ensure() {
   fi
 }
 
+plugin_ensure liuyinz/fzf-collection
 plugin_ensure trapd00r/LS_COLORS
 plugin_ensure skywind3000/z.lua
 plugin_ensure Aloxaf/fzf-tab
@@ -112,7 +110,7 @@ plugin_ensure TamCore/autoupdate-oh-my-zsh-plugins autoupdate
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  osx
+  # osx
   github
   gitignore
   git-flow-avh
@@ -124,6 +122,7 @@ plugins=(
   # npm
   # custom plugins
   z.lua
+  fzf-collection
   autoupdate
   zsh-completions
   fzf-tab
@@ -190,7 +189,6 @@ source $DOT_DIR/share/zsh/func.sh
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
 command -v starship >/dev/null && eval "$(starship init zsh)"
 command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
-
 command -v fnm >/dev/null && eval "$(fnm env)"
 
 # uncomment the line below to profile

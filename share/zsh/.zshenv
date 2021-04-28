@@ -66,7 +66,6 @@ export _ZL_ROOT_MARKERS=".git,.svn,.hg,.root,package.json"
 export _ZL_EXCLUDE_DIRS="$CACHE_HOME,$HOME/Library"
 
 # fzf
-# export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS=" \
