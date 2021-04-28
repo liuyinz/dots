@@ -109,21 +109,19 @@ plugin_ensure TamCore/autoupdate-oh-my-zsh-plugins autoupdate
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  # osx
+  sudo
   github
   gitignore
   git-flow-avh
   colored-man-pages
   fzf
-  sudo
   vscode
   dash
-  # npm
+  npm
   # custom plugins
-  z.lua
-  fzf-collection
   autoupdate
+  fzf-collection
+  z.lua
   zsh-completions
   fzf-tab
   zsh-autosuggestions
@@ -187,9 +185,10 @@ source $DOT_DIR/share/zsh/alias.sh
 source $DOT_DIR/share/zsh/func.sh
 
 command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
-command -v starship >/dev/null && eval "$(starship init zsh)"
 command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
 command -v fnm >/dev/null && eval "$(fnm env)"
 
+# theme
+command -v starship >/dev/null && eval "$(starship init zsh)"
 # uncomment the line below to profile
 # zprof | less

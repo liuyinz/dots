@@ -3,31 +3,12 @@
 # Aliases
 # default
 # -----------------------
-alias reload='source ~/.zshrc'
+alias zr='source ~/.zshrc'
 
 alias ls='gls -F --color --group-directories-first'
 alias ll='gls -lhF --color --group-directories-first'
 alias la='gls -AF --color --group-directories-first'
 alias lla='gls -lhAF --color --group-directories-first'
-
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-
-alias -- -='cd -'
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
-
-alias md='mkdir -p'
-alias rd=rmdir
 
 alias du="du -h"
 alias df="df -h"
@@ -65,10 +46,7 @@ alias ga='git add'
 alias gai='git add --interactive'
 alias gaa='git add --all'
 alias gae='git add --edit'
-alias gap='git add --patch'
 alias gau='git add --update'
-alias gaf='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 git add'
-alias gafp='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
 
 alias gc='git commit'
 alias gcm='git commit -m '
@@ -77,10 +55,8 @@ alias gcd='git commit --amend'
 alias gcdn='git commit --amend --no-edit'
 
 alias ge='git restore'
-alias gec='git restore --staged'
-alias ges='git restore -s'
-alias gecs='git restore --staged -s'
-alias gea='git restore --staged --worktree -s'
+alias ges='git restore --staged'
+alias gea='git restore --staged --worktree'
 
 alias gst='git stash'
 alias gstp='git stash pop'
@@ -96,7 +72,7 @@ alias gbv='git branch --list -vv -a'
 alias gbm='git branch -vv --merged'
 
 alias gw='git switch'
-alias gwm='git switch master'
+alias gwm='git switch $(git_main_branch)'
 alias gwd='git switch develop'
 alias gwc='git switch -c'
 alias gwt='git switch --track'
@@ -110,7 +86,7 @@ alias gmu='git merge upstream/master'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias grbd='git rebase develop'
-alias grbm='git rebase master'
+alias grbm='git rebase $(git_main_branch)'
 
 alias gp='git push'
 alias gpo='git push origin "$(git_current_branch)"'
@@ -147,7 +123,8 @@ alias gsmi='git submodule init'
 alias gsmd='git submodule deinit'
 alias gsmu='git submodule update'
 alias gsmf='git submodule foreach'
-alias gsmp='git submodule foreach "git pull origin"'
+alias gsmp='git submodule foreach -q --recursive "git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master); git pull"'
+
 
 alias gs='git status -sb'
 alias gbl='git blame -w --abbrev=6'
@@ -163,7 +140,7 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gds='git diff --stat'
 alias gdcs='git diff --stat --cached'
-alias gdd='git diff master...HEAD'
+alias gdd='git diff $(git_main_branch)...HEAD'
 alias gdt='git difftool'
 
 ## Debug
