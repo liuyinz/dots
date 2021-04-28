@@ -123,8 +123,11 @@ alias gsmi='git submodule init'
 alias gsmd='git submodule deinit'
 alias gsmu='git submodule update'
 alias gsmf='git submodule foreach'
-alias gsmp='git submodule foreach -q --recursive "git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master); git pull"'
+alias gsmp='git submodule update --remote --merge --jobs "$(nproc)"'
 
+# git pull origin master --recurse-submodules
+
+# alias gsmp='git submodule foreach --recursive "git switch $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master); git pull"'
 
 alias gs='git status -sb'
 alias gbl='git blame -w --abbrev=6'
