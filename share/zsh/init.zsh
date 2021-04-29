@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # uncomment this and the last line for zprof info
-# zmodload zsh/zprof
+[[ "$ZSH_PROFILER" == "true" ]] && zmodload zsh/zprof
 
 # use emacs-style keybinds
 bindkey -e

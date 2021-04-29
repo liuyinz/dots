@@ -97,6 +97,9 @@ fi
 # source init.sh
 # sed -i "\:$ETC/init.sh:d" ~/.bashrc
 echo 'Adding line to .zshrc: source $DOT_DIR/share/init.zsh'
-echo 'source $DOT_DIR/share/init.zsh' >>~/.zshrc
+echo '# Uncomment line below to start zsh profiler
+# ZSH_PROFILER="true"
+
+source $DOT_DIR/share/zsh/init.zsh' >>~/.zshrc
 
 echo "All done! Pls restart shell."
