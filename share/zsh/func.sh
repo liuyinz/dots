@@ -44,3 +44,9 @@ git_main_branch() {
   done
   echo master
 }
+
+update_all() {
+  upgrade_ohl_my_zsh
+  rm "$ZSH_EVALCACHE_DIR"/init-*.sh
+  rm ~/.zcompdump*
+}

@@ -148,7 +148,7 @@ autoload -U compinit && compinit
 export ZSH_EVALCACHE_DIR=$CACHE_HOME/.zsh-evalcache
 
 # LS_COLORS
-command -v dircolors >/dev/null && . <(dircolors -b $ZSH_CUSTOM/plugins/LS_COLORS/LS_COLORS 2>/dev/null)
+command -v dircolors >/dev/null && _evalcache dircolors -b $ZSH_CUSTOM/plugins/LS_COLORS/LS_COLORS 2>/dev/null
 
 # autosuggestions
 bindkey ",," autosuggest-accept
@@ -193,11 +193,11 @@ source $DOT_DIR/share/zsh/alias.sh
 source $DOT_DIR/share/zsh/func.sh
 
 command -v kitty >/dev/null && _evalcache kitty + complete setup zsh 2>/dev/null
-command -v pip3 >/dev/null && _evalcache pip3 completion --zsh
-command -v fnm >/dev/null && _evalcache fnm env
+command -v pip3 >/dev/null && _evalcache pip3 completion --zsh 2>/dev/null
+command -v fnm >/dev/null && _evalcache fnm env 2>/dev/null
 
 # theme
-command -v starship >/dev/null && _evalcache starship init zsh
+command -v starship >/dev/null && _evalcache starship init zsh 2>/dev/null
 
 
 # uncomment the line below to profile
