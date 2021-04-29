@@ -188,8 +188,7 @@ zstyle ':completion:*' rehash true
 # Keep directories and files separated
 zstyle ':completion:*' list-dirs-first true
 
-source $DOT_DIR/share/zsh/alias.sh
-source $DOT_DIR/share/zsh/func.sh
+source $DOT_DIR/share/zsh/patch.zsh
 
 command -v kitty >/dev/null && _evalcache kitty + complete setup zsh 2>/dev/null
 command -v pip3 >/dev/null && _evalcache pip3 completion --zsh 2>/dev/null
