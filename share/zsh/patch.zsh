@@ -50,10 +50,7 @@ alias gcdn='git commit --amend --no-edit'
 alias ge='git restore'
 
 alias gst='git stash'
-alias gstp='git stash pop'
-alias gstl='git stash list'
 alias gsts='git stash show --stat -p'
-alias gstb='git stash branch'
 
 ## Branch
 alias gb='git branch'
@@ -106,13 +103,8 @@ alias gplr='git pull --rebase --autostash -v'
 
 # submodule
 alias gsm='git submodule'
-alias gsma='git submodule add'
 alias gsmaf='git submodule add --depth 1 --force'
 alias gsman='git submodule add --depth 1 --name'
-alias gsms='git submodule status'
-alias gsmi='git submodule init'
-alias gsmd='git submodule deinit'
-alias gsmu='git submodule update'
 alias gsmf='git submodule foreach'
 alias gsmp='git submodule update --remote --merge --jobs "$(nproc)"'
 alias gsmj='pfs -c "git pull origin" -j 16'
