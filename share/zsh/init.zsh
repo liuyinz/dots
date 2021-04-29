@@ -115,7 +115,6 @@ plugin_ensure TamCore/autoupdate-oh-my-zsh-plugins autoupdate
 plugins=(
   sudo
   github
-  gitignore
   git-flow-avh
   colored-man-pages
   fzf
