@@ -33,9 +33,6 @@ alias bb='bonclay backup'
 alias bs='bonclay sync'
 alias br='bonclay restore'
 
-#pfs
-alias gsmj='pfs -c "git pull origin" -j 16'
-
 # Scripts
 # -----------------------
 # alias wt='when-changed -v -r -1 -s ./ pytest -s '
@@ -55,8 +52,8 @@ alias gcd='git commit --amend'
 alias gcdn='git commit --amend --no-edit'
 
 alias ge='git restore'
-alias ges='git restore --staged'
-alias gea='git restore --staged --worktree'
+# alias ges='git restore --staged'
+# alias gea='git restore --staged --worktree'
 
 alias gst='git stash'
 alias gstp='git stash pop'
@@ -124,7 +121,7 @@ alias gsmd='git submodule deinit'
 alias gsmu='git submodule update'
 alias gsmf='git submodule foreach'
 alias gsmp='git submodule update --remote --merge --jobs "$(nproc)"'
-
+alias gsmj='pfs -c "git pull origin" -j 16'
 # git pull origin master --recurse-submodules
 
 # alias gsmp='git submodule foreach --recursive "git switch $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master); git pull"'
