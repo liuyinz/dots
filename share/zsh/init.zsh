@@ -94,6 +94,7 @@ plugin_ensure() {
   fi
 }
 
+plugin_ensure mroth/evalcache
 plugin_ensure liuyinz/fzf-collection
 plugin_ensure trapd00r/LS_COLORS
 plugin_ensure skywind3000/z.lua
@@ -120,6 +121,7 @@ plugins=(
   npm
   # custom plugins
   autoupdate
+  evalcache
   fzf-collection
   z.lua
   zsh-completions
@@ -138,6 +140,9 @@ export ALL_PROXY=
 
 # completions
 autoload -U compinit && compinit
+
+# evalcache
+export ZSH_EVALCACHE_DIR=$CACHE_HOME/.zsh-evalcache
 
 # LS_COLORS
 command -v dircolors >/dev/null && . <(dircolors -b $ZSH_CUSTOM/plugins/LS_COLORS/LS_COLORS 2>/dev/null)
@@ -184,11 +189,13 @@ zstyle ':completion:*' list-dirs-first true
 source $DOT_DIR/share/zsh/alias.sh
 source $DOT_DIR/share/zsh/func.sh
 
-command -v kitty >/dev/null && . <(kitty + complete setup zsh 2>/dev/null)
-command -v pip3 >/dev/null && eval "$(pip3 completion --zsh)"
-command -v fnm >/dev/null && eval "$(fnm env)"
+command -v kitty >/dev/null && _evalcache kitty + complete setup zsh 2>/dev/null
+command -v pip3 >/dev/null && _evalcache pip3 completion --zsh
+command -v fnm >/dev/null && _evalcache fnm env
 
 # theme
-command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v starship >/dev/null && _evalcache starship init zsh
+
+
 # uncomment the line below to profile
-# zprof | less
+[[ "$ZSH_PROFILER" == "true" ]] &&  zprof | less
