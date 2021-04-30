@@ -103,13 +103,32 @@ alias gplr='git pull --rebase --autostash -v'
 
 # submodule
 alias gsm='git submodule'
-alias gsmaf='git submodule add --depth 1 --force'
-alias gsman='git submodule add --depth 1 --name'
 alias gsmf='git submodule foreach'
-alias gsmp='git submodule update --remote --merge --jobs "$(nproc)"'
 alias gsmj='pfs -c "git pull origin" -j 16'
-# git pull origin master --recurse-submodules
 
+gsma() {
+  if [[ "$#" -eq 1 ]]; then
+    git submodule add --depth 10 -- $1
+  elif [[ "$#" -eq 2 ]]; then
+    git submodule add --depth 10 --name $(basename $2) -- $1 $2
+  else
+    echo "wrong arguments !"
+  fi
+}
+
+# gsma() {
+#   repo=$1
+#   path=${2:-$(basename $1 .git)}
+#   name=$(basename $path)
+#   if [[ "$#" -eq 1 ]] || [[ "$#" -eq 2 ]]; then
+#     git submodule add --depth 10 --name $name -- $repo $path
+#   else
+#     echo "wrong arguments !"
+#   fi
+# }
+
+# alias gsmp='git submodule update --remote --merge --jobs "$(nproc)"'
+# git pull origin master --recurse-submodules
 # alias gsmp='git submodule foreach --recursive "git switch $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master); git pull"'
 
 alias gs='git status -sb'
