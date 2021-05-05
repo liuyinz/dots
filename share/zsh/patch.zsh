@@ -105,7 +105,6 @@ alias gplr='git pull --rebase --autostash -v'
 # submodule
 alias gsm='git submodule'
 alias gsmf='git submodule foreach'
-alias gsmj='pfs -c "git pull origin" -j 16'
 
 gsma() {
   if [[ "$#" -eq 1 ]]; then
