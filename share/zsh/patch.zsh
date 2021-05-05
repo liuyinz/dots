@@ -40,6 +40,7 @@ alias gai='git add --interactive'
 alias gaa='git add --all'
 alias gae='git add --edit'
 alias gau='git add --update'
+alias gap='git add --patch'
 
 alias gc='git commit'
 alias gcm='git commit -m '

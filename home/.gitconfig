@@ -128,6 +128,6 @@
 	abbrevCommit = true
 	decorate = no
 [submodule]
-	fetchJobs = 16
+	fetchJobs = 8
 [status]
 	submoduleSummary = true
