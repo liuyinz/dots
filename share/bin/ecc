@@ -8,6 +8,7 @@
 
 daemon_running_p() {
   # return 1 if succeed,otherwise 0
+  # shellcheck disable=SC2009
   ps aux | grep -v grep | grep -c "Emacs.app/Contents/MacOS/Emacs --bg-daemon="
   # same as: pgrep -f ".."
 }
