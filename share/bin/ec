@@ -2,6 +2,7 @@
 
 daemon_running_p() {
   # return 1 if succeed,otherwise 0
+  # shellcheck disable=SC2009
   ps aux | grep -v grep | grep -c "Emacs.app/Contents/MacOS/Emacs --bg-daemon="
   # same as: pgrep -f ".."
 }
@@ -9,7 +10,7 @@ daemon_running_p() {
 [[ $(daemon_running_p) -eq 0 ]] && emacs --daemon
 
 # get list of emacs frames.
-frameslist=$(emacsclient --alternate-editor '' --eval '(frame-list)' 2>/dev/null | egrep -o '(frame)+')
+frameslist=$(emacsclient --alternate-editor '' --eval '(frame-list)' 2>/dev/null | grep -E -o '(frame)+')
 
 if [ "$(echo "$frameslist" | sed -n '$=')" -ge 2 ]; then
   # prevent creating another X frame if there is at least one present.
