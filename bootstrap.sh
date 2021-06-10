@@ -32,11 +32,11 @@ fi
 # ###########################################################
 
 echo "checking homebrew..."
-brew_installed_p=$(which brew) 2>&1 >/dev/null
-if [[ $? != 0 ]]; then
+if ! which brew; then
   echo "installing homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  if [[ $? != 0 ]]; then
+  if ! /bin/bash -c "$(
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+  )"; then
     echo "unable to install homebrew, script $0 abort!"
     exit 2
   fi
@@ -46,7 +46,6 @@ fi
 # install Brewfile
 # ###########################################################
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 echo "bundle install begin..."
 brew bundle install --no-lock --file=share/Brewfile
 brew update && brew upgrade && brew cleanup
@@ -56,8 +55,7 @@ echo "bundle installation finished."
 # sync dotfiles
 # ###########################################################
 
-bonclay_installed_p=$(which bonclay) 2>&1 >/dev/null
-if [[ $? == 0 ]]; then
+if which bonclay; then
   if [[ $use_config =~ (h|H|home|HOME) ]]; then
     echo "bonclay sync home.yaml"
     bonclay sync home.yaml
@@ -71,8 +69,7 @@ else
   echo "bonclay not installed !!"
 fi
 
-nvim_installed_p=$(which nvim) 2>&1 >/dev/null
-if [[ $? == 0 ]] && [[ $use_nvim =~ (y|yes|Y) ]]; then
+if which nvim && [[ $use_nvim =~ (y|yes|Y) ]]; then
   echo "Cloning nvim setting..."
   rm -f ~/.config/nvim
   git clone https://github.com/liuyinz/nvim.git ~/.config/nvim
@@ -87,16 +84,19 @@ fi
 echo "checking whether homebrew zsh as default shell..."
 [[ ! $(brew list --version zsh) ]] && brew install zsh
 # set zsh as the user login shell
-CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
+CURRENTSHELL=$(dscl . -read /Users/"$USER" UserShell | awk '{print $2}')
 if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
   echo "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
   # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
   # chsh -s /usr/local/bin/zsh
-  sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/zsh >/dev/null 2>&1
+  sudo dscl . -change /Users/"$USER" UserShell "$SHELL" /usr/local/bin/zsh >/dev/null 2>&1
 fi
 # source init.sh
 # sed -i "\:$ETC/init.sh:d" ~/.bashrc
+
+# shellcheck disable=SC2016
 echo 'Adding line to .zshrc: source $DOT_DIR/share/init.zsh'
+# shellcheck disable=SC2016
 echo '# Uncomment line below to start zsh profiler
 # ZSH_PROFILER="true"
 
