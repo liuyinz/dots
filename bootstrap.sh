@@ -57,11 +57,11 @@ echo "bundle installation finished."
 
 if which bonclay; then
   if [[ $use_config =~ (h|H|home|HOME) ]]; then
-    echo "bonclay sync home.yaml"
-    bonclay sync home.yaml
+    echo "bonclay sync common.yaml && bonclay sync home.yaml"
+    bonclay sync common.yaml && bonclay sync home.yaml
   elif [[ $use_config =~ (w|W|work|WORK) ]]; then
-    echo "bonclay sync work.yaml"
-    bonclay sync work.yaml
+    echo "bonclay sync common.yaml && bonclay sync work.yaml"
+    bonclay sync common.yaml && bonclay sync work.yaml
   else
     echo "pls choose right config!!"
   fi
