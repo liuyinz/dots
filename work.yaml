@@ -11,45 +11,7 @@ sync:
   overwrite: true
 
 spec:
-  # terminal
-  ~/.config/kitty/kitty.conf: share/kitty.conf
-  # theme
-  ~/.config/starship.toml: share/starship.toml
-  # zsh
-  ~/.zshenv: share/zsh/.zshenv
-  ~/.zprofile: share/zsh/.zprofile
-  # git
-  ~/.gitignore: share/.gitignore
-  ~/.gitmessage: share/.gitmessage
-  ~/.config/gh/config.yml: share/gh.yml
-  ~/Library/Application Support/jesseduffield/lazygit/config.yml: share/lazygit.yml
-  # ~/.config/config.yml: git/lazygit.yml
-
-  # JS
-  ~/.prettierrc.json: share/.prettierrc.json
-  ~/.eslintrc.json: share/.eslintrc.json
-  ~/.npmrcs: share/npmrcs
-  # PY
-  ~/.pylintrc: share/.pylintrc
-  ~/.config/pip/pip.conf: share/pip.conf
-  # other
-  ~/.gemrc: share/.gemrc
-  ~/.shellcheckrc: share/.shellcheckrc
-  ~/.clang-format: share/.clang-format
-  ~/.Brewfile: share/Brewfile
-
-  # config
-  ~/.config/htop/htoprc: share/htoprc
-  ~/.config/bat.conf: share/bat.conf
-  ~/.local/cargo/config: share/cargo.toml
-  ~/.config/.ripgreprc: share/.ripgreprc
-  ~/.config/.rgignore: share/.rgignore
-  ~/.config/ranger: share/ranger
-
   # macos
-  ~/.config/karabiner/karabiner.json: share/karabiner/karabiner.json
-  ~/.config/karabiner/assets: share/karabiner/assets
-
   ~/.config/proxychains.conf: work/proxychains.conf
   ~/.gitconfig: work/.gitconfig
   ~/.ssh/config: work/ssh_config

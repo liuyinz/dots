@@ -1,0 +1,56 @@
+# For a detailed description on the different options and how to configure them,
+# refer to the user guide: https://github.com/talal/bonclay/blob/master/doc/guide.md
+backup:
+  overwrite: true
+
+restore:
+  overwrite: true
+
+sync:
+  clean: true
+  overwrite: true
+
+spec:
+  # terminal
+  ~/.config/kitty/kitty.conf: common/kitty.conf
+  # theme
+  ~/.config/starship.toml: common/starship.toml
+  # zsh
+  ~/.zshenv: common/zsh/.zshenv
+  ~/.zprofile: common/zsh/.zprofile
+  # git
+  ~/.gitignore: common/.gitignore
+  ~/.gitmessage: common/.gitmessage
+  ~/.config/gh/config.yml: common/gh.yml
+  ~/Library/Application Support/jesseduffield/lazygit/config.yml: common/lazygit.yml
+  # ~/.config/config.yml: git/lazygit.yml
+  ~/.editorconfig: common/.editorconfig
+
+  # self-defined commad
+  ~/.local/bin: common/bin
+
+  # JS
+  ~/.prettierrc.json: common/.prettierrc.json
+  ~/.eslintrc.json: common/.eslintrc.json
+  ~/.npmrcs: common/npmrcs
+  # PY
+  ~/.pythonrc: common/.pythonrc
+  ~/.pylintrc: common/.pylintrc
+  ~/.config/pip/pip.conf: common/pip.conf
+  # other
+  ~/.gemrc: common/.gemrc
+  ~/.shellcheckrc: common/.shellcheckrc
+  ~/.clang-format: common/.clang-format
+  ~/.Brewfile: common/Brewfile
+
+  # config
+  ~/.config/htop/htoprc: common/htoprc
+  ~/.config/bat.conf: common/bat.conf
+  ~/.local/cargo/config: common/cargo.toml
+  ~/.config/.ripgreprc: common/.ripgreprc
+  ~/.config/.rgignore: common/.rgignore
+  ~/.config/ranger: common/ranger
+
+  # macos
+  ~/.config/karabiner/karabiner.json: common/karabiner/karabiner.json
+  ~/.config/karabiner/assets: common/karabiner/assets

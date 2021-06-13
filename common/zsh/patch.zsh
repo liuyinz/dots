@@ -29,9 +29,9 @@ alias pc="proxychains4"
 alias etest="emacs -Q --daemon --load ~/.config/emacs/init-mini.el"
 
 # bonclay
-alias bb='bonclay backup'
-alias bs='bonclay sync'
-alias br='bonclay restore'
+alias bb='bonclay backup common.yaml && bonclay backup'
+alias bs='bonclay sync common.yaml && bonclay sync'
+alias br='bonclay restore common.yaml && bonclay restore'
 
 # Git
 # -----------------------

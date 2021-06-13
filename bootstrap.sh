@@ -47,7 +47,7 @@ fi
 # ###########################################################
 
 echo "bundle install begin..."
-brew bundle install --no-lock --file=share/Brewfile
+brew bundle install --no-lock --file=common/Brewfile
 brew update && brew upgrade && brew cleanup
 echo "bundle installation finished."
 
@@ -95,11 +95,11 @@ fi
 # sed -i "\:$ETC/init.sh:d" ~/.bashrc
 
 # shellcheck disable=SC2016
-echo 'Adding line to .zshrc: source $DOT_DIR/share/init.zsh'
+echo 'Adding line to .zshrc: source $DOT_DIR/common/init.zsh'
 # shellcheck disable=SC2016
 echo '# Uncomment line below to start zsh profiler
 # ZSH_PROFILER="true"
 
-source $DOT_DIR/share/zsh/init.zsh' >>~/.zshrc
+source $DOT_DIR/common/zsh/init.zsh' >>~/.zshrc
 
 echo "All done! Pls restart shell."
