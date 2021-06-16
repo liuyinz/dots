@@ -99,11 +99,11 @@ fi
 # sed -i "\:$ETC/init.sh:d" ~/.bashrc
 
 # shellcheck disable=SC2016
-echo 'Adding line to .zshrc: source $DOT_DIR/common/init.zsh'
+echo 'Adding line to .zshrc: source $DOT_DIR/common/zsh/init.zsh'
 # shellcheck disable=SC2016
 echo '# Uncomment line below to start zsh profiler
 # ZSH_PROFILER="true"
 
 source $DOT_DIR/common/zsh/init.zsh' >>~/.zshrc
 
-echo "All done! Pls restart shell."
+echo "All done! Pls restart zsh."
