@@ -31,8 +31,12 @@ fi
 # install homebrew
 # ###########################################################
 
+exists() {
+  which "$1" &>/dev/null
+}
+
 echo "checking homebrew..."
-if ! which brew; then
+if ! exists brew; then
   echo "installing homebrew"
   if ! /bin/bash -c "$(
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
@@ -55,7 +59,7 @@ echo "bundle installation finished."
 # sync dotfiles
 # ###########################################################
 
-if which bonclay; then
+if exists bonclay; then
   if [[ $use_config =~ (h|H|home|HOME) ]]; then
     echo "bonclay sync common.yaml && bonclay sync home.yaml"
     bonclay sync common.yaml && bonclay sync home.yaml
@@ -69,7 +73,7 @@ else
   echo "bonclay not installed !!"
 fi
 
-if which nvim && [[ $use_nvim =~ (y|yes|Y) ]]; then
+if exists nvim && [[ $use_nvim =~ (y|yes|Y) ]]; then
   echo "Cloning nvim setting..."
   rm -f ~/.config/nvim
   git clone https://github.com/liuyinz/nvim.git ~/.config/nvim
