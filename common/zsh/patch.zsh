@@ -184,16 +184,6 @@ alias grts='git reset --soft'
 # alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 # alias glwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 
-# brew remove useless dependence
-# -------------------
-# [B]rew [R]emove [D]ependence
-brd() {
-  export HOMEBREW_NO_AUTO_UPDATE=1
-  brew bundle dump -q -f --file="/tmp/Brewfile"
-  brew bundle -f --cleanup --file="/tmp/Brewfile"
-  rm /tmp/Brewfile
-}
-
 # [B]rew [I]nstall [O]lder Version Formula
 # -------------------
 bio() {
