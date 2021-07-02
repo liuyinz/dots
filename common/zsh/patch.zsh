@@ -108,9 +108,9 @@ alias gsmf='git submodule foreach'
 
 gsma() {
   if [[ "$#" -eq 1 ]]; then
-    git submodule add --depth 10 -- $1
+    git submodule add --depth 10 --force -- $1
   elif [[ "$#" -eq 2 ]]; then
-    git submodule add --depth 10 --name $(basename $2) -- $1 $2
+    git submodule add --depth 10 --force --name $(basename $2) -- $1 $2
   else
     echo "wrong arguments !"
   fi
