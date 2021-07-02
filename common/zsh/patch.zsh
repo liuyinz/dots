@@ -26,7 +26,7 @@ alias rr="ranger"
 alias vi='nvim'
 alias lg='lazygit'
 alias pc="proxychains4"
-alias etest="emacs -Q --daemon --load ~/.config/emacs/init-mini.el"
+alias etest="emacs -Q --daemon --load ~/.config/emacs/core/init-test.el"
 
 # bonclay
 alias bb='bonclay backup common.yaml && bonclay backup'
