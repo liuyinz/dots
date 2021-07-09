@@ -15,7 +15,7 @@
   # editor = code --wait
   # editor = nvim
   # editor = ecc
-  editor = ett
+  editor = et
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/ray/.gitignore
