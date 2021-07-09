@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 
-daemon_running_p() {
-  # return 1 if succeed,otherwise 0
-  # shellcheck disable=SC2009
-  ps aux | grep -v grep | grep -c "Emacs.app/Contents/MacOS/Emacs --bg-daemon="
-  # same as: pgrep -f ".."
-}
-
-[[ $(daemon_running_p) -eq 0 ]] && emacs --daemon
+emacsclient -u --eval '(server-running-p)' 2>/dev/null || emacs --daemon
 
 LOCAL=${1}
 REMOTE=${2}
