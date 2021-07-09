@@ -8,7 +8,7 @@
 # }
 # [[ $(daemon_running_p) -eq 0 ]] && emacs --daemon
 
-emacsclient -u --eval '(server-running-p)' 2>/dev/null || emacs --daemon
+emacsclient -u -e '(server-running-p)' 2>/dev/null || emacs --daemon
 
 # Create one if there is no X window yet.
-emacsclient --quiet --alternate-editor "" --tty "$@"
+emacsclient -q -a "" -t "$@"

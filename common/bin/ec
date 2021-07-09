@@ -1,23 +1,22 @@
 #!/usr/bin/env bash
 
-emacsclient -u --eval '(server-running-p)' 2>/dev/null || emacs --daemon
+emacsclient -u -e '(server-running-p)' 2>/dev/null || emacs --daemon
 
-[[ ! $(emacsclient --eval '(daemonp)' 2>/dev/null) == "t" ]]; num=$?
+[[ ! $(emacsclient -e '(daemonp)' 2>/dev/null) == "t" ]]
+num=$?
 
 # get list of emacs frames.
-frameslist=$(emacsclient --alternate-editor '' --eval '(frame-list)' 2>/dev/null |
-               grep -E -o '(frame)+')
+frameslist=$(emacsclient -e '(frame-list)' 2>/dev/null | grep -E -o '(frame)+')
 
 # prevent creating another X frame if there is at least one present.
 if [ "$(echo "$frameslist" | sed -n '$=')" -ge "$((num + 1))" ]; then
   if [ "$#" -ne 0 ]; then
-    emacsclient --quiet --no-wait --alternate-editor "" "$@"
+    emacsclient -q -n -a "" "$@"
   else
     # NOTE see@https://emacs.stackexchange.com/a/34740
-    emacsclient --quiet --no-wait --alternate-editor "" -u \
-                --eval '(select-frame-set-input-focus (selected-frame))'
+    emacsclient -u -e '(select-frame-set-input-focus (selected-frame))'
   fi
 else
   # Create one if there is no X window yet.
-  emacsclient --quiet --no-wait --alternate-editor "" --create-frame "$@"
+  emacsclient -q -n -a "" -c "$@"
 fi
